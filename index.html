@@ -501,16 +501,15 @@ body.is-admin .admin-only-block{display:block!important}.admin-only-block{displa
 <div class="modal-overlay" id="modal-notif"><div class="modal" style="width:440px"><div class="modal-header"><div class="modal-title"><i class="fas fa-bell" style="color:var(--cyan);margin-right:8px"></i>Notificações</div><button class="modal-close" onclick="closeModal('modal-notif')">✕</button></div><div id="notif-list" style="max-height:360px;overflow-y:auto"><div style="text-align:center;padding:22px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div><div class="modal-footer"><button class="btn btn-primary" onclick="closeModal('modal-notif')">Fechar</button></div></div></div>
 
 <div class="modal-overlay" id="modal-cfg"><div class="modal"><div class="modal-header"><div class="modal-title"><i class="fas fa-gear" style="color:var(--cyan);margin-right:8px"></i>Configurações</div><button class="modal-close" onclick="closeModal('modal-cfg')">✕</button></div>
-<div class="form-group"><label class="form-label">URL do Google Apps Script (API)</label><div style="display:flex;gap:8px"><input id="cfg-api" class="form-input" type="text" placeholder="https://script.google.com/macros/s/…/exec"><button class="btn btn-outline btn-sm" style="white-space:nowrap;flex-shrink:0" onclick="testApi()"><i class="fas fa-satellite-dish"></i> Testar</button></div><div style="font-size:11px;color:var(--text3);margin-top:4px">Cole a URL do seu Apps Script conectado ao Google Sheets.</div></div>
 <div class="form-row"><div class="form-group"><label class="form-label">Ano letivo</label><input id="cfg-ano" class="form-input" type="number" placeholder="2026" value="2026"></div><div class="form-group"><label class="form-label">Próxima prestação de contas</label><input id="cfg-prazo" class="form-input" type="date"></div></div>
 <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius2);padding:14px;margin-top:4px">
-  <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">🚀 Inicialização da Planilha</div>
-  <div style="font-size:12px;color:var(--text2);margin-bottom:10px">Clique abaixo para criar automaticamente todas as abas no Google Drive da conta vinculada ao Apps Script.</div>
-  <button id="btn-init-sheet" class="btn btn-primary btn-sm" onclick="initPlanilha()" style="width:100%;justify-content:center"><i class="fas fa-wand-magic-sparkles"></i> Inicializar planilha no Drive</button>
+  <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">☁️ Banco de dados — Google Drive</div>
+  <div style="font-size:12px;color:var(--text2);margin-bottom:10px">Verifica e sincroniza todas as abas da planilha vinculada. Use se notar alguma aba faltando.</div>
+  <button id="btn-init-sheet" class="btn btn-primary btn-sm" onclick="initPlanilha()" style="width:100%;justify-content:center"><i class="fas fa-wand-magic-sparkles"></i> Verificar / Sincronizar abas</button>
   <div id="init-result" style="margin-top:8px"></div>
 </div>
 <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius2);padding:14px;margin-top:10px">
-  <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">📋 Sheets gerenciadas</div>
+  <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">📋 Abas gerenciadas</div>
   <div style="font-size:12px;color:var(--text2);line-height:2;font-family:'DM Mono',monospace">Membros · Eventos · Atas · Correspondencias · Oficios · PS · Candidatos · Eleicoes · Candidaturas · Financeiro · Documentos · Comunicados · Configuracoes</div>
 </div>
 <div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-cfg')">Cancelar</button><button class="btn btn-primary" onclick="salvarCfg()"><i class="fas fa-save"></i> Salvar</button></div></div></div>
@@ -518,43 +517,45 @@ body.is-admin .admin-only-block{display:block!important}.admin-only-block{displa
 <div class="modal-overlay" id="modal-confirm" style="z-index:99999"><div class="modal" style="width:380px;text-align:center"><div class="confirm-icon" id="conf-icon-wrap"><i class="fas fa-exclamation-triangle" id="conf-icon"></i></div><div class="modal-title" id="conf-title" style="justify-content:center;font-size:16px;margin-bottom:10px">Confirmar ação</div><p id="conf-msg" style="font-size:13.5px;color:var(--text2);line-height:1.6;margin-bottom:22px"></p><div style="display:flex;gap:10px;justify-content:center"><button class="btn btn-outline" onclick="closeModal('modal-confirm')" style="min-width:100px">Cancelar</button><button class="btn btn-danger" id="conf-ok" style="min-width:100px">Confirmar</button></div></div></div>
 <script>
 'use strict';
-// ── API ──────────────────────────────────────────────────────
-// Persiste a URL da API entre sessões via localStorage
-var API_URL = localStorage.getItem('dlt-api-url') || '';
-const _cache = {}, _TTL = 30000;
+// ── API (ofuscada — não editar) ───────────────────────────────
+(function(){
+  const _a='aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J3WlN3V25mbE';
+  const _b='pXLW1QZ0xzVllMSEt0eD';
+  const _c='d6Xzdld0xoREdqRG1PbkRUdHRuS2dUUTZQdkFWODZGSldqekVzcFFQMTZwUS9leGVj';
+  window._DLT=atob(_a+_b+_c);
+})();
+var API_URL=window._DLT;
+delete window._DLT;
+const _cache={},_TTL=30000;
 
 // Indicador de conexão no topbar
 function _updateApiStatus(ok){
-  const el=document.getElementById('api-status');
-  if(!el)return;
-  if(!API_URL){el.innerHTML='<i class="fas fa-plug-circle-xmark"></i> API não configurada';el.style.color='var(--red)';return;}
+  const el=document.getElementById('api-status');if(!el)return;
   el.innerHTML=ok?'<i class="fas fa-circle" style="font-size:8px"></i> API conectada':'<i class="fas fa-triangle-exclamation"></i> Falha na API';
   el.style.color=ok?'var(--green)':'var(--orange)';
 }
 async function _pingApi(){
-  if(!API_URL){_updateApiStatus(false);return;}
   try{const r=await fetch(API_URL+'?action=ping');const d=await r.json();_updateApiStatus(d.success);}
   catch{_updateApiStatus(false);}
 }
 // Inicializa planilha via API
 async function initPlanilha(){
-  if(!API_URL){showToast('Configure e salve a URL da API primeiro.','warning');return;}
   const btn=document.getElementById('btn-init-sheet');
-  if(btn){btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Criando abas...';}
+  if(btn){btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Verificando abas...';}
   try{
     const r=await fetch(API_URL+'?action=setup');
     const d=await r.json();
     if(d.success){
-      showToast('Planilha inicializada! Todas as abas criadas.','success');
+      showToast('Planilha verificada! Todas as abas estão prontas.','success');
       if(d.data?.url){
         const a=document.createElement('a');a.href=d.data.url;a.target='_blank';
-        a.innerHTML='<i class="fas fa-table"></i> Abrir planilha';
+        a.innerHTML='<i class="fas fa-table"></i> Abrir planilha no Drive';
         a.className='btn btn-outline btn-sm';a.style.cssText='margin-top:12px;display:flex;width:fit-content;';
         document.getElementById('init-result')?.replaceChildren(a);
       }
     }else throw new Error(d.error);
-  }catch(e){showToast('Erro ao inicializar: '+e.message,'error');}
-  finally{if(btn){btn.disabled=false;btn.innerHTML='<i class="fas fa-wand-magic-sparkles"></i> Inicializar planilha no Drive';}}
+  }catch(e){showToast('Erro: '+e.message,'error');}
+  finally{if(btn){btn.disabled=false;btn.innerHTML='<i class="fas fa-wand-magic-sparkles"></i> Verificar / Sincronizar abas';}}
 }
 async function apiGet(p){
   if(!API_URL) return null;
@@ -1210,14 +1211,7 @@ async function enviarComunicado(){
   catch(e){showToast('Erro: '+e.message,'error');}finally{if(btn){btn.disabled=false;btn.innerHTML='<i class="fas fa-paper-plane"></i> Publicar';}}
 }
 async function salvarCfg(){
-  const apiUrl=document.getElementById('cfg-api')?.value.trim();const prazo=document.getElementById('cfg-prazo')?.value.trim();
-  if(apiUrl&&apiUrl!==API_URL){
-    API_URL=apiUrl;
-    localStorage.setItem('dlt-api-url',apiUrl);
-    Object.keys(_cache).forEach(k=>delete _cache[k]);
-    _pingApi();
-    showToast('URL da API salva!','info');
-  }
+  const prazo=document.getElementById('cfg-prazo')?.value.trim();
   if(prazo){try{try{await apiPost({action:'update',sheet:'Configuracoes',id:'prazo_prestacao_contas',row:{chave:'prazo_prestacao_contas',valor:prazo,complemento:''}});}catch{await apiPost({action:'insert',sheet:'Configuracoes',row:{id:'prazo_prestacao_contas',chave:'prazo_prestacao_contas',valor:prazo,complemento:''}});}}catch(e){}}
   closeModal('modal-cfg');showToast('Configurações salvas!','success');
 }
@@ -1231,17 +1225,6 @@ function delLanc(id,desc){if(!reqAdmin('excluir lançamentos'))return;customConf
 function delOficio(id){if(!reqAdmin('excluir ofícios'))return;customConfirm({title:'Excluir ofício',message:'Excluir este ofício?',confirmLabel:'Excluir',onConfirm:async()=>{try{await apiPost({action:'delete',sheet:'Oficios',id});showToast('Ofício excluído.','success');loadOficios();}catch(e){showToast('Erro: '+e.message,'error');}}});}
 function delDoc(id,nome){if(!reqAdmin('excluir documentos'))return;customConfirm({title:'Excluir documento',message:`Excluir "${nome}"?`,confirmLabel:'Excluir',onConfirm:async()=>{try{if(id)await apiPost({action:'delete',sheet:'Documentos',id});showToast('Documento excluído.','success');loadDocumentos();}catch(e){showToast('Erro: '+e.message,'error');}}});}
 
-async function testApi(){
-  const url=(document.getElementById('cfg-api')?.value||'').trim();
-  if(!url){showToast('Cole a URL da API primeiro.','warning');return;}
-  showToast('Testando conexão…','info');
-  try{
-    const r=await fetch(url+'?action=ping');
-    const d=await r.json();
-    if(d.success){showToast('✅ API conectada com sucesso!','success');}
-    else throw new Error(d.error);
-  }catch(e){showToast('❌ Falha: '+e.message,'error');}
-}
 function bindButtons(){
   document.querySelectorAll('[data-exp]').forEach(btn=>{
     btn.addEventListener('click',()=>exportarRelatorio(btn.getAttribute('data-exp')));
@@ -1258,11 +1241,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   const saved=sessionStorage.getItem('dlt-role');
   if(saved&&CREDS[saved]){loginOk(saved);}
   else{setTimeout(()=>document.getElementById('senha-input')?.focus(),300);}
-  // Pré-preenche campo API no modal de config
-  const cfgInput=document.getElementById('cfg-api');
-  if(cfgInput&&API_URL)cfgInput.value=API_URL;
-  // Verifica conexão com a API se já configurada
-  if(API_URL)_pingApi();
+  // Verifica conexão com a API ao iniciar
+  _pingApi();
 });
 </script>
 </body>
