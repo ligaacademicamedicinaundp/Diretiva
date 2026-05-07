@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diretiva das Ligas Acadêmicas — UNDP</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{--bg:#04070f;--bg2:#080d1a;--bg3:#0d1525;--card:#0f1a2e;--card2:#152035;--border:rgba(0,80,200,.18);--border2:rgba(0,120,255,.32);--blue:#1d6ef5;--blue2:#1055cc;--cyan:#00cfff;--orange:#ff6b2b;--green:#00d48a;--yellow:#f5c518;--red:#ff4444;--purple:#a855f7;--text:#e8edf8;--text2:#7a95be;--text3:#3a5070;--radius:14px;--radius2:9px;--shadow:0 16px 48px rgba(0,0,0,.7);--tr:.22s cubic-bezier(.4,0,.2,1);--lapa:#00cfff;--lsm:#a855f7;--lamf:#f5c518;--lped:#00d48a;--lendo:#ff6b2b;--lgino:#ff7eb3}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;overflow-x:hidden}
+.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g1-2{grid-template-columns:1fr 2fr}.g2-1{grid-template-columns:2fr 1fr}
+#login-screen{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;background-image:radial-gradient(ellipse at 15% 40%,rgba(29,110,245,.09) 0%,transparent 55%),radial-gradient(ellipse at 85% 70%,rgba(255,107,43,.06) 0%,transparent 50%)}
+.login-card{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:48px 44px;width:100%;max-width:440px;box-shadow:0 32px 80px rgba(0,0,0,.6);animation:fadeUp .45s ease both;position:relative;overflow:hidden}
+.login-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--orange))}
+.login-brand{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.login-emblem{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;flex-shrink:0;box-shadow:0 8px 24px rgba(29,110,245,.4)}
+.login-brand-info h1{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;line-height:1.2}
+.login-brand-info p{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px}
+.login-tabs{display:flex;gap:4px;background:var(--bg3);border-radius:var(--radius2);padding:4px;margin-bottom:28px}
+.login-tab{flex:1;padding:9px;text-align:center;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;color:var(--text3);transition:all var(--tr)}
+.login-tab.active{background:var(--card2);color:var(--cyan);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.login-field{margin-bottom:18px}
+.login-field label{display:block;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.login-field .input-wrap{position:relative}
+.login-field input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius2);padding:12px 40px 12px 16px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text);outline:none;transition:all var(--tr)}
+.login-field input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,207,255,.1)}
+.toggle-pass{position:absolute;right:13px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--text3);font-size:14px;transition:color var(--tr)}
+.toggle-pass:hover{color:var(--cyan)}
+.login-error{display:none;align-items:center;gap:8px;background:rgba(255,68,68,.1);border:1px solid rgba(255,68,68,.25);border-radius:var(--radius2);padding:10px 14px;color:var(--red);font-size:13px;margin-bottom:16px}
+.login-error.show{display:flex;animation:fadeIn .2s ease}
+.login-btn{width:100%;padding:13px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border:none;border-radius:var(--radius2);font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all var(--tr);display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 6px 24px rgba(29,110,245,.35)}
+.login-btn:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(29,110,245,.5)}
+.login-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.login-footer{text-align:center;margin-top:22px;font-size:12px;color:var(--text3)}
+.sidebar{width:252px;min-height:100vh;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;left:0;top:0;bottom:0;z-index:100;transition:width var(--tr)}
+.sidebar-logo{padding:26px 22px 18px;border-bottom:1px solid var(--border)}
+.logo-row{display:flex;align-items:center;gap:12px}
+.logo-emblem{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:#fff;flex-shrink:0;box-shadow:0 4px 14px rgba(29,110,245,.4)}
+.logo-text .name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;line-height:1.2;letter-spacing:.3px}
+.logo-text .sub{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-top:2px}
+.sidebar-nav{flex:1;padding:14px 10px;overflow-y:auto}
+.nav-section{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--text3);padding:10px 12px 5px;margin-top:6px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--radius2);cursor:pointer;color:var(--text2);transition:all var(--tr);margin-bottom:1px;font-size:13.5px;font-weight:500;position:relative}
+.nav-item:hover{background:var(--bg3);color:var(--text)}
+.nav-item.active{background:linear-gradient(135deg,rgba(29,110,245,.18),rgba(0,207,255,.08));color:var(--cyan);border:1px solid rgba(0,207,255,.2)}
+.nav-item .ni{width:16px;text-align:center;font-size:14px;flex-shrink:0}
+.nav-item .lbl{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-badge{margin-left:auto;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;min-width:20px;text-align:center;flex-shrink:0}
+.nb-blue{background:rgba(29,110,245,.3);color:var(--cyan)}.nb-orange{background:rgba(255,107,43,.3);color:var(--orange)}.nb-red{background:rgba(255,68,68,.3);color:var(--red)}.nb-green{background:rgba(0,212,138,.3);color:var(--green)}
+.sidebar-footer{padding:14px 10px;border-top:1px solid var(--border)}
+.user-card{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--radius2);background:var(--bg3)}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0}
+.user-info .uname{font-size:13px;font-weight:600}.user-info .urole{font-size:11px;color:var(--text3)}
+.main{margin-left:252px;flex:1;min-height:100vh;display:flex;flex-direction:column}
+.topbar{height:60px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;gap:14px;position:sticky;top:0;z-index:50}
+.page-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;flex:1;letter-spacing:.3px}
+.topbar-actions{display:flex;align-items:center;gap:8px}
+.btn-icon{width:34px;height:34px;border-radius:var(--radius2);border:1px solid var(--border2);background:var(--bg3);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text2);transition:all var(--tr);font-size:13px}
+.btn-icon:hover{color:var(--cyan);border-color:var(--cyan)}
+.search-box{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius2);padding:6px 14px;min-width:200px}
+.search-box input{background:none;border:none;outline:none;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;flex:1}
+.role-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.rb-admin{background:rgba(245,197,24,.15);color:var(--yellow);border:1px solid rgba(245,197,24,.3)}
+.rb-membro{background:rgba(0,207,255,.12);color:var(--cyan);border:1px solid rgba(0,207,255,.2)}
+.content{padding:28px;flex:1}.page{display:none}.page.active{display:block;animation:fadeUp .3s ease}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:border-color var(--tr)}
+.card:hover{border-color:var(--border2)}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3)}
+.card-action{font-size:12px;color:var(--blue);cursor:pointer;transition:color var(--tr);font-weight:500}
+.card-action:hover{color:var(--cyan)}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;position:relative;overflow:hidden;transition:all var(--tr)}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent,var(--blue))}
+.stat-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.stat-label{font-size:11px;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.stat-value{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;line-height:1}
+.stat-change{font-size:12px;margin-top:7px;display:flex;align-items:center;gap:4px}
+.stat-change.up{color:var(--green)}.stat-change.down{color:var(--red)}.stat-change.neu{color:var(--text3)}
+.stat-icon{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:32px;opacity:.07}
+.liga-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:all var(--tr);position:relative;overflow:hidden}
+.liga-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--liga-cor)}
+.liga-card:hover{transform:translateY(-3px);border-color:var(--liga-cor);box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.liga-card-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.liga-emblem{width:38px;height:38px;border-radius:10px;background:color-mix(in srgb,var(--liga-cor) 15%,transparent);border:1px solid color-mix(in srgb,var(--liga-cor) 30%,transparent);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.liga-card h3{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:2px}
+.liga-card .liga-sigla{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--liga-cor)}
+.liga-stats{display:flex;gap:14px}
+.liga-stat .v{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--liga-cor)}
+.liga-stat .l{font-size:10px;color:var(--text3);margin-top:2px}
+.hero{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:36px 40px;margin-bottom:22px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(29,110,245,.12) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;left:30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,207,255,.07) 0%,transparent 70%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(29,110,245,.12);border:1px solid rgba(29,110,245,.25);color:var(--cyan);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px}
+.hero h1{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;line-height:1.2;margin-bottom:12px;background:linear-gradient(135deg,var(--text) 40%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--text2);font-size:14px;line-height:1.7;max-width:580px}
+.hero-kpis{display:flex;gap:28px;margin-top:28px}
+.hero-kpi .v{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--cyan)}
+.hero-kpi .l{font-size:11px;color:var(--text3);margin-top:2px}
+.hero-div{width:1px;background:var(--border2)}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;padding:9px 14px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);border-bottom:1px solid var(--border);cursor:pointer;user-select:none;transition:color var(--tr)}
+th:hover{color:var(--cyan)}
+td{padding:12px 14px;font-size:13.5px;border-bottom:1px solid rgba(0,80,200,.08)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(29,110,245,.04)}
+.td-name{display:flex;align-items:center;gap:10px}
+.td-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600}
+.b-blue{background:rgba(29,110,245,.15);color:#6fa3ff;border:1px solid rgba(29,110,245,.25)}
+.b-green{background:rgba(0,212,138,.15);color:var(--green);border:1px solid rgba(0,212,138,.25)}
+.b-red{background:rgba(255,68,68,.15);color:var(--red);border:1px solid rgba(255,68,68,.25)}
+.b-yellow{background:rgba(245,197,24,.15);color:var(--yellow);border:1px solid rgba(245,197,24,.25)}
+.b-orange{background:rgba(255,107,43,.15);color:var(--orange);border:1px solid rgba(255,107,43,.25)}
+.b-purple{background:rgba(168,85,247,.15);color:var(--purple);border:1px solid rgba(168,85,247,.25)}
+.b-cyan{background:rgba(0,207,255,.15);color:var(--cyan);border:1px solid rgba(0,207,255,.25)}
+.b-gray{background:rgba(122,149,190,.12);color:var(--text3);border:1px solid rgba(122,149,190,.2)}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:var(--radius2);font-size:13px;font-weight:600;cursor:pointer;transition:all var(--tr);border:none;font-family:'DM Sans',sans-serif}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;box-shadow:0 4px 16px rgba(29,110,245,.35)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(29,110,245,.5)}
+.btn-outline{background:transparent;border:1px solid var(--border2);color:var(--text2)}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan)}
+.btn-danger{background:rgba(255,68,68,.15);color:var(--red);border:1px solid rgba(255,68,68,.25)}
+.btn-danger:hover{background:rgba(255,68,68,.25)}
+.btn-sm{padding:5px 11px;font-size:12px}.btn-xs{padding:4px 9px;font-size:11px}
+.form-group{margin-bottom:14px}
+.form-label{font-size:11px;font-weight:700;color:var(--text3);margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:.8px}
+.form-input,.form-select,.form-textarea{width:100%;padding:10px 13px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13.5px;transition:all var(--tr);outline:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,207,255,.1)}
+.form-textarea{resize:vertical;min-height:88px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex;animation:fadeIn .2s ease}
+.modal{background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:30px;width:520px;max-width:96vw;box-shadow:0 32px 80px rgba(0,0,0,.6);position:relative}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.modal-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700}
+.modal-close{background:none;border:none;color:var(--text3);font-size:18px;cursor:pointer;transition:color var(--tr)}
+.modal-close:hover{color:var(--red)}
+.modal-footer{margin-top:22px;display:flex;gap:10px;justify-content:flex-end}
+.tl-item{display:flex;gap:14px;padding-bottom:18px;position:relative}
+.tl-item:not(:last-child)::before{content:'';position:absolute;left:14px;top:28px;bottom:0;width:1px;background:var(--border)}
+.tl-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px}
+.tl-info .tl-title{font-size:13.5px;font-weight:600;margin-bottom:3px}
+.tl-info .tl-meta{font-size:11px;color:var(--text3)}
+.progress-bar{height:5px;background:var(--bg3);border-radius:10px;overflow:hidden;margin-top:7px}
+.progress-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width 1s ease}
+.inner-tabs{display:flex;gap:4px;margin-bottom:20px}
+.inner-tab{padding:7px 15px;border-radius:var(--radius2);font-size:12.5px;font-weight:500;cursor:pointer;color:var(--text3);border:1px solid transparent;transition:all var(--tr)}
+.inner-tab.active{background:var(--card2);color:var(--cyan);border-color:rgba(0,207,255,.2)}
+.inner-tab:hover:not(.active){color:var(--text);background:var(--bg3)}
+.inner-panel{display:none}.inner-panel.active{display:block}
+.fin-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(0,80,200,.07)}
+.fin-row:last-child{border-bottom:none}
+.fin-desc{font-size:13.5px}.fin-cat{font-size:11px;color:var(--text3);margin-top:2px}
+.fin-val{font-family:'DM Mono',monospace;font-size:14px;font-weight:500}
+.fin-val.pos{color:var(--green)}.fin-val.neg{color:var(--red)}
+.pag-wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 0 2px;flex-wrap:wrap;gap:8px}
+.pag-info{font-size:11px;color:var(--text3)}.pag-btns{display:flex;gap:3px}
+.pag-btn{min-width:30px;height:30px;border-radius:7px;border:1px solid var(--border2);background:var(--bg3);color:var(--text2);font-size:11px;font-weight:600;cursor:pointer;transition:all var(--tr);display:flex;align-items:center;justify-content:center;padding:0 9px}
+.pag-btn:hover{border-color:var(--cyan);color:var(--cyan)}.pag-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}.pag-btn:disabled{opacity:.3;cursor:not-allowed;pointer-events:none}
+.donut-wrap{display:flex;align-items:center;gap:22px}.donut-legend{flex:1}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:12.5px;margin-bottom:7px}
+.ldot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.confirm-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 16px}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+@media(max-width:1100px){.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){
+  .sidebar{width:68px}.sidebar .logo-text,.sidebar .nav-item .lbl,.sidebar .nav-section,.sidebar .user-info,.sidebar .nav-badge{display:none}
+  .sidebar.open{width:252px;z-index:200;box-shadow:6px 0 40px rgba(0,0,0,.5)}
+  .sidebar.open .logo-text,.sidebar.open .nav-item .lbl,.sidebar.open .nav-section,.sidebar.open .user-info,.sidebar.open .nav-badge{display:revert}
+  .main{margin-left:68px}.g2,.g3,.g1-2,.g2-1{grid-template-columns:1fr}
+  #mob-overlay{display:none;position:fixed;inset:0;z-index:190;background:rgba(0,0,0,.5)}
+  #mob-overlay.vis{display:block}#btn-ham{display:flex!important}
+}
+@media(max-width:600px){.content{padding:14px}.hero{padding:24px 20px}.hero h1{font-size:26px}.hero-kpis{gap:16px}}
+#btn-ham{display:none;position:fixed;bottom:22px;left:10px;z-index:210;width:46px;height:46px;border-radius:13px;background:var(--blue);color:#fff;border:none;cursor:pointer;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 20px rgba(29,110,245,.5);transition:transform var(--tr)}
+#btn-ham:active{transform:scale(.92)}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:5px}
+.divider{height:1px;background:var(--border);margin:22px 0}.gap16{margin-bottom:16px}.gap22{margin-bottom:22px}
+.section-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:4px}
+.section-sub{font-size:13px;color:var(--text2);margin-bottom:20px}
+[data-tip]{position:relative}
+[data-tip]::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);background:var(--card2);border:1px solid var(--border2);color:var(--text);font-size:11px;padding:4px 8px;border-radius:6px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s;z-index:9999}
+[data-tip]:hover::after{opacity:1}
+.admin-only{display:none!important}body.is-admin .admin-only{display:inline-flex!important}
+body.is-admin .admin-only-block{display:block!important}.admin-only-block{display:none!important}
+.skel{background:linear-gradient(90deg,var(--bg3) 25%,var(--card2) 50%,var(--bg3) 75%);background-size:800px 100%;animation:shimmer 1.4s infinite;border-radius:5px;display:inline-block;height:1em}
+</style>
+</head>
+<body>
+<div id="mob-overlay" onclick="closeSidebar()"></div>
+<button id="btn-ham" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-brand">
+      <div class="login-emblem">DL</div>
+      <div class="login-brand-info"><h1>Diretiva das Ligas Acadêmicas</h1><p>UNDP — Santa Rita, PY</p></div>
+    </div>
+    <div class="login-tabs">
+      <div class="login-tab active" id="tab-adm" onclick="selRole('admin')"><i class="fas fa-shield-halved" style="margin-right:6px"></i>Secretaria</div>
+      <div class="login-tab" id="tab-mem" onclick="selRole('membro')"><i class="fas fa-user" style="margin-right:6px"></i>Membro</div>
+    </div>
+    <div class="login-error" id="login-err"><i class="fas fa-exclamation-circle"></i><span id="login-err-msg">Senha incorreta.</span></div>
+    <div class="login-field"><label>Senha de acesso</label><div class="input-wrap"><input type="password" id="senha-input" placeholder="Digite sua senha…" onkeydown="if(event.key==='Enter')doLogin()"><i class="fas fa-eye toggle-pass" id="pass-eye" onclick="togglePass()"></i></div></div>
+    <button class="login-btn" id="login-btn" onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> Entrar</button>
+    <div class="login-footer">Acesso restrito — Diretiva das Ligas Acadêmicas · UNDP</div>
+  </div>
+</div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo"><div class="logo-row"><div class="logo-emblem">DL</div><div class="logo-text"><div class="name">Diretiva das Ligas</div><div class="sub">UNDP · Medicina</div></div></div></div>
+  <nav class="sidebar-nav">
+    <div class="nav-section">Principal</div>
+    <div class="nav-item active" onclick="goPage('home')"><i class="ni fas fa-gauge-high"></i><span class="lbl">Painel Geral</span></div>
+    <div class="nav-item" onclick="goPage('ligas')"><i class="ni fas fa-layer-group"></i><span class="lbl">Ligas Acadêmicas</span><span class="nav-badge nb-blue" id="nb-ligas">6</span></div>
+    <div class="nav-item" onclick="goPage('agenda')"><i class="ni fas fa-calendar-days"></i><span class="lbl">Agenda Unificada</span><span class="nav-badge nb-orange" id="nb-agenda" style="display:none">0</span></div>
+    <div class="nav-item" onclick="goPage('membros')"><i class="ni fas fa-users"></i><span class="lbl">Membros</span></div>
+    <div class="nav-section">Gestão</div>
+    <div class="nav-item" onclick="goPage('secretaria')"><i class="ni fas fa-file-lines"></i><span class="lbl">Secretaria</span></div>
+    <div class="nav-item" onclick="goPage('regulamentos')"><i class="ni fas fa-scale-balanced"></i><span class="lbl">Regulamentos</span></div>
+    <div class="nav-item" onclick="goPage('processos')"><i class="ni fas fa-users-gear"></i><span class="lbl">Proc. Seletivos</span><span class="nav-badge nb-orange" id="nb-ps" style="display:none">0</span></div>
+    <div class="nav-item" onclick="goPage('eleicoes')"><i class="ni fas fa-ballot-check"></i><span class="lbl">Eleições</span><span class="nav-badge nb-red" id="nb-el" style="display:none">!</span></div>
+    <div class="nav-section">Operações</div>
+    <div class="nav-item" onclick="goPage('financeiro')"><i class="ni fas fa-coins"></i><span class="lbl">Financeiro</span></div>
+    <div class="nav-item" onclick="goPage('documentos')"><i class="ni fas fa-folder-open"></i><span class="lbl">Documentos</span></div>
+    <div class="nav-item" onclick="goPage('comunicacao')"><i class="ni fas fa-bullhorn"></i><span class="lbl">Comunicação</span><span class="nav-badge nb-red" id="nb-com" style="display:none">0</span></div>
+    <div class="nav-item" onclick="goPage('relatorios')"><i class="ni fas fa-chart-bar"></i><span class="lbl">Relatórios</span></div>
+  </nav>
+  <div class="sidebar-footer"><div class="user-card"><div class="avatar" id="sb-avatar">—</div><div class="user-info"><div class="uname" id="sb-name">—</div><div class="urole" id="sb-role">Faça login</div></div></div></div>
+</aside>
+<div class="main">
+  <div class="topbar">
+    <div class="page-title" id="pg-title">Painel Geral</div>
+    
+      <div class="search-box"><i class="fas fa-search" style="color:var(--text3)"></i><input type="text" id="srch-input" placeholder="Buscar…" autocomplete="off"></div>
+      <div id="api-status" onclick="openModal('modal-cfg')" style="font-size:11px;font-weight:600;color:var(--text3);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:5px;padding:4px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;transition:all var(--tr)" title="Status da API"><i class="fas fa-plug-circle-xmark"></i> API não configurada</div>
+      <div class="btn-icon" data-tip="Notificações" onclick="openModal('modal-notif')"><i class="fas fa-bell"></i></div>
+      <div class="btn-icon" data-tip="Configurações" onclick="openModal('modal-cfg')"><i class="fas fa-gear"></i></div>
+      <span id="tb-role-badge" style="display:none"></span>
+      <div class="btn-icon" data-tip="Recarregar" onclick="reloadData()"><i class="fas fa-arrows-rotate" id="icon-reload"></i></div>
+      <div class="btn-icon" data-tip="Sair" style="color:var(--red)" onclick="doLogout()"><i class="fas fa-right-from-bracket"></i></div>
+    </div>
+  </div>
+  <div class="content">
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-tag"><i class="fas fa-shield-halved"></i> Diretiva Acadêmica · UNDP</div>
+    <h1>Dashboard das<br>Ligas Acadêmicas</h1>
+    <p>Central de gestão unificada da Diretiva. Acompanhe todas as 6 ligas, eventos, processos seletivos, eleições e documentação em um só lugar.</p>
+    <div class="hero-kpis">
+      <div class="hero-kpi"><div class="v" id="kpi-ligas">6</div><div class="l">Ligas ativas</div></div>
+      <div class="hero-div"></div>
+      <div class="hero-kpi"><div class="v" id="kpi-membros"><span class="skel" style="width:40px"></span></div><div class="l">Membros totais</div></div>
+      <div class="hero-div"></div>
+      <div class="hero-kpi"><div class="v" id="kpi-eventos"><span class="skel" style="width:30px"></span></div><div class="l">Eventos no semestre</div></div>
+      <div class="hero-div"></div>
+      <div class="hero-kpi"><div class="v" id="kpi-ano">2026</div><div class="l">Ano letivo</div></div>
+    </div>
+  </div>
+  <div class="grid g4 gap22">
+    <div class="stat-card" style="--accent:var(--blue)"><div class="stat-label">Membros ativos</div><div class="stat-value" id="st-membros"><span class="skel" style="width:50px"></span></div><div class="stat-change up" id="st-membros-sub"><i class="fas fa-arrow-up"></i> carregando</div><i class="fas fa-users stat-icon"></i></div>
+    <div class="stat-card" style="--accent:var(--orange)"><div class="stat-label">PS em andamento</div><div class="stat-value" id="st-ps"><span class="skel" style="width:40px"></span></div><div class="stat-change neu" id="st-ps-sub"><i class="fas fa-circle-dot"></i> carregando</div><i class="fas fa-users-gear stat-icon"></i></div>
+    <div class="stat-card" style="--accent:var(--yellow)"><div class="stat-label">Próximo evento</div><div class="stat-value" style="font-size:20px" id="st-evento"><span class="skel" style="width:80px"></span></div><div class="stat-change neu" id="st-evento-sub"><i class="fas fa-map-pin"></i> —</div><i class="fas fa-calendar-check stat-icon"></i></div>
+    <div class="stat-card" style="--accent:var(--green)"><div class="stat-label">Atas pendentes</div><div class="stat-value" id="st-docs"><span class="skel" style="width:40px"></span></div><div class="stat-change neu" id="st-docs-sub"><i class="fas fa-file-circle-exclamation"></i> carregando</div><i class="fas fa-file-lines stat-icon"></i></div>
+  </div>
+  <div class="divider"></div>
+  <div class="card-header" style="margin-bottom:16px"><div class="card-title" style="font-size:13px">Ligas Acadêmicas — Visão Geral</div><div class="card-action" onclick="goPage('ligas')">Ver detalhes →</div></div>
+  <div class="grid g3" id="home-ligas-grid"></div>
+  <div class="divider"></div>
+  <div class="grid g2-1">
+    <div class="card"><div class="card-header"><div class="card-title">Próximos eventos</div><div class="card-action" onclick="goPage('agenda')">Ver agenda →</div></div><div id="home-agenda-list"><div style="text-align:center;padding:20px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+    <div class="card"><div class="card-header"><div class="card-title">Membros por liga</div></div><div id="home-donut"><div style="text-align:center;padding:20px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+  </div>
+  <div class="divider"></div>
+  <div class="grid g2">
+    <div class="card"><div class="card-header"><div class="card-title">Processos seletivos ativos</div><div class="card-action" onclick="goPage('processos')">Ver todos →</div></div><div id="home-ps-list"><div style="text-align:center;padding:20px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+    <div class="card"><div class="card-header"><div class="card-title">Pendências da secretaria</div><div class="card-action" onclick="goPage('secretaria')">Ver secretaria →</div></div><div id="home-sec-list"><div style="text-align:center;padding:20px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+  </div>
+</div>
+<!-- LIGAS -->
+<div class="page" id="page-ligas">
+  <div class="section-title">Ligas Acadêmicas</div>
+  <div class="section-sub">Visão detalhada das 6 ligas vinculadas à Diretiva — UNDP 2026.</div>
+  <div class="grid g3 gap22" id="ligas-grid-detail"></div>
+  <div class="divider"></div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Membros consolidados</div>
+      <div style="display:flex;gap:8px">
+        <select class="form-select" id="filter-liga-tbl" style="width:auto;padding:5px 12px;font-size:12px" onchange="renderMembrosLigasTbl()"><option value="">Todas as ligas</option><option>LAPA</option><option>LSM</option><option>LAMF</option><option>LPED</option><option>LENDO</option><option>LGINO</option></select>
+        <button class="btn btn-primary btn-sm admin-only" onclick="openModal('modal-add-membro')"><i class="fas fa-user-plus"></i> Adicionar</button>
+      </div>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th onclick="sortTbl('Nome')">Nome</th><th onclick="sortTbl('Matricula')">Matrícula</th><th onclick="sortTbl('Periodo')">Período</th><th onclick="sortTbl('Liga')">Liga</th><th onclick="sortTbl('Cargo')">Cargo</th><th onclick="sortTbl('Status')">Status</th><th>Ações</th></tr></thead><tbody id="ligas-membros-tbody"><tr><td colspan="7" style="text-align:center;padding:28px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></td></tr></tbody></table></div>
+    <div class="pag-wrap" id="ligas-mbr-pag" style="display:none"><div class="pag-info" id="pag-info-ligas"></div><div class="pag-btns" id="pag-btns-ligas"></div></div>
+  </div>
+</div>
+<!-- AGENDA -->
+<div class="page" id="page-agenda">
+  <div class="section-title">Agenda Unificada</div>
+  <div class="section-sub">Todos os eventos de todas as ligas em um calendário único.</div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+    <div class="inner-tabs" style="margin-bottom:0"><div class="inner-tab active" onclick="switchTab(this,'ag-lista')">📋 Lista</div><div class="inner-tab" onclick="switchTab(this,'ag-cal')">📅 Calendário</div></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <select class="form-select" id="ag-filter-liga" style="width:auto;padding:6px 12px;font-size:12px" onchange="loadAgenda()"><option value="">Todas as ligas</option><option>LAPA</option><option>LSM</option><option>LAMF</option><option>LPED</option><option>LENDO</option><option>LGINO</option></select>
+      <button class="btn btn-primary btn-sm admin-only" onclick="openModal('modal-novo-evento')"><i class="fas fa-plus"></i> Novo evento</button>
+    </div>
+  </div>
+  <div class="inner-panel active" id="ag-lista"><div id="agenda-list-container"><div style="text-align:center;padding:32px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+  <div class="inner-panel" id="ag-cal"><div class="card"><div id="cal-container"><div style="text-align:center;padding:24px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div></div>
+</div>
+<!-- MEMBROS -->
+<div class="page" id="page-membros">
+  <div class="section-title">Membros — Todas as Ligas</div>
+  <div class="section-sub">Diretório consolidado de membros de todas as ligas acadêmicas.</div>
+  <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap">
+    <div class="search-box" style="flex:1;min-width:180px"><i class="fas fa-search" style="color:var(--text3)"></i><input type="text" id="mbr-srch" placeholder="Buscar membro…" oninput="_renderMbr()"></div>
+    <select class="form-select" id="mbr-liga" style="width:auto;padding:8px 12px" onchange="_renderMbr()"><option value="">Todas as ligas</option><option>LAPA</option><option>LSM</option><option>LAMF</option><option>LPED</option><option>LENDO</option><option>LGINO</option></select>
+    <select class="form-select" id="mbr-status" style="width:auto;padding:8px 12px" onchange="_renderMbr()"><option value="">Todos os status</option><option>Ativo</option><option>Afastado</option><option>Desligado</option></select>
+    <button class="btn btn-primary btn-sm admin-only" onclick="openModal('modal-add-membro')"><i class="fas fa-user-plus"></i> Adicionar</button>
+  </div>
+  <div class="card" style="padding:0">
+    <div class="table-wrap"><table><thead><tr><th onclick="sortMbr('Nome')">Nome</th><th onclick="sortMbr('Matricula')">Matrícula</th><th onclick="sortMbr('Periodo')">Período</th><th onclick="sortMbr('Liga')">Liga</th><th onclick="sortMbr('Cargo')">Cargo</th><th onclick="sortMbr('DataIngresso')">Ingresso</th><th onclick="sortMbr('Status')">Status</th><th>Ações</th></tr></thead><tbody id="mbr-tbody"><tr><td colspan="8" style="text-align:center;padding:28px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></td></tr></tbody></table></div>
+    <div class="pag-wrap" id="mbr-pag" style="display:none;padding:12px 20px"><div class="pag-info" id="pag-info-mbr"></div><div class="pag-btns" id="pag-btns-mbr"></div></div>
+  </div>
+</div>
+<!-- SECRETARIA -->
+<div class="page" id="page-secretaria">
+  <div class="section-title">Secretaria</div>
+  <div class="section-sub">Atas, correspondências, ofícios e composição da Diretiva.</div>
+  <div class="inner-tabs">
+    <div class="inner-tab active" onclick="switchTab(this,'sec-atas')">📝 Atas</div>
+    <div class="inner-tab" onclick="switchTab(this,'sec-corr')">📬 Correspondências</div>
+    <div class="inner-tab" onclick="switchTab(this,'sec-oficios')">📄 Ofícios</div>
+    <div class="inner-tab" onclick="switchTab(this,'sec-diretiva')">🏛️ Composição</div>
+  </div>
+  <div class="inner-panel active" id="sec-atas">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+      <select class="form-select" id="atas-filter-liga" style="width:auto;padding:7px 12px;font-size:12px" onchange="loadAtas()"><option value="">Todas / Diretiva</option><option>Diretiva</option><option>LAPA</option><option>LSM</option><option>LAMF</option><option>LPED</option><option>LENDO</option><option>LGINO</option></select>
+      <button class="btn btn-primary btn-sm admin-only" onclick="openModal('modal-nova-ata')"><i class="fas fa-plus"></i> Nova ata</button>
+    </div>
+    <div id="atas-container"><div style="text-align:center;padding:28px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div>
+  </div>
+  <div class="inner-panel" id="sec-corr">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:16px"><button class="btn btn-primary btn-sm admin-only" onclick="openModal('modal-nova-corr')"><i class="fas fa-envelope"></i> Nova correspondência</button></div>
+    <div class="grid g2">
+      <div class="card"><div class="card-header"><div class="card-title"><i class="fas fa-inbox" style="color:var(--cyan);margin-right:6px"></i>Recebidas</div></div><div id="corr-rec-list"><div style="text-align:center;padding:18px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+      <div class="card"><div class="card-header"><div class="card-title"><i class="fas fa-paper-plane" style="color:var(--orange);margin-right:6px"></i>Enviadas</div></div><div id="corr-env-list"><div style="text-align:center;padding:18px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+    </div>
+  </div>
+  <div class="inner-panel" id="sec-oficios">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:16px"><button class="btn btn-primary btn-sm admin-only" onclick="openModal('modal-novo-oficio')"><i class="fas fa-file-signature"></i> Novo ofício</button></div>
+    <div class="card" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Nº</th><th>Assunto</th><th>Destinatário</th><th>Data</th><th>Status</th><th>Link</th></tr></thead><tbody id="oficios-tbody"><tr><td colspan="6" style="text-align:center;padding:24px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></td></tr></tbody></table></div></div>
+  </div>
+  <div class="inner-panel" id="sec-diretiva">
+    <div class="grid g2">
+      <div class="card"><div class="card-header"><div class="card-title">Composição atual da Diretiva</div><button class="btn btn-outline btn-sm admin-only" onclick="openModal('modal-edit-diretiva')"><i class="fas fa-pen"></i> Editar</button></div><div id="diretiva-composicao"><div style="text-align:center;padding:18px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+      <div class="card"><div class="card-header"><div class="card-title">Mandato atual</div></div><div id="mandato-info"><div style="text-align:center;padding:18px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+    </div>
+  </div>
+</div>
+<!-- REGULAMENTOS -->
+<div class="page" id="page-regulamentos">
+  <div class="section-title">Regulamentos</div>
+  <div class="section-sub">Estatuto, regimentos internos, regulamentos de PS e normas institucionais.</div>
+  <div class="inner-tabs">
+    <div class="inner-tab active" onclick="switchTab(this,'reg-est')">📜 Estatuto & Regimento</div>
+    <div class="inner-tab" onclick="switchTab(this,'reg-normas')">📋 Normas Internas</div>
+    <div class="inner-tab" onclick="switchTab(this,'reg-ligas')">🏷️ Regulamentos das Ligas</div>
+  </div>
+  <div class="inner-panel active" id="reg-est">
+    <div class="grid g3">
+      <div class="card" style="text-align:center;cursor:pointer" onclick="abrirDoc('Estatuto Social da Diretiva','')"><i class="fas fa-scroll" style="font-size:38px;color:var(--blue);margin-bottom:12px;margin-top:8px"></i><div style="font-weight:600;margin-bottom:5px">Estatuto Social</div><div style="font-size:11px;color:var(--text3)">Diretiva das Ligas · 2025</div><div class="badge b-blue" style="margin-top:10px">PDF</div></div>
+      <div class="card" style="text-align:center;cursor:pointer" onclick="abrirDoc('Regimento Interno','')"><i class="fas fa-gavel" style="font-size:38px;color:var(--yellow);margin-bottom:12px;margin-top:8px"></i><div style="font-weight:600;margin-bottom:5px">Regimento Interno</div><div style="font-size:11px;color:var(--text3)">Aprovado em assembleia · 2025</div><div class="badge b-yellow" style="margin-top:10px">PDF</div></div>
+      <div class="card" style="text-align:center;cursor:pointer" onclick="abrirDoc('Regulamento de PS','')"><i class="fas fa-clipboard-list" style="font-size:38px;color:var(--orange);margin-bottom:12px;margin-top:8px"></i><div style="font-weight:600;margin-bottom:5px">Reg. de Proc. Seletivo</div><div style="font-size:11px;color:var(--text3)">Padrão para todas as ligas</div><div class="badge b-orange" style="margin-top:10px">PDF</div></div>
+      <div class="card" style="text-align:center;cursor:pointer" onclick="abrirDoc('Regimento de Eleições','')"><i class="fas fa-ballot-check" style="font-size:38px;color:var(--green);margin-bottom:12px;margin-top:8px"></i><div style="font-weight:600;margin-bottom:5px">Regimento de Eleições</div><div style="font-size:11px;color:var(--text3)">Diretoria e ligas</div><div class="badge b-green" style="margin-top:10px">PDF</div></div>
+      <div class="card" style="text-align:center;cursor:pointer" onclick="abrirDoc('Código de Ética','')"><i class="fas fa-handshake-angle" style="font-size:38px;color:var(--purple);margin-bottom:12px;margin-top:8px"></i><div style="font-weight:600;margin-bottom:5px">Código de Ética</div><div style="font-size:11px;color:var(--text3)">Conduta dos membros</div><div class="badge b-purple" style="margin-top:10px">PDF</div></div>
+      <div class="card admin-only-block" style="text-align:center;cursor:pointer;border:2px dashed var(--border2)" onclick="openModal('modal-upload-doc')"><i class="fas fa-upload" style="font-size:38px;color:var(--text3);margin-bottom:12px;margin-top:8px"></i><div style="font-weight:600;margin-bottom:5px;color:var(--text2)">Adicionar documento</div><div style="font-size:11px;color:var(--text3)">Clique para fazer upload</div></div>
+    </div>
+  </div>
+  <div class="inner-panel" id="reg-normas"><div id="normas-list"><div style="text-align:center;padding:28px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+  <div class="inner-panel" id="reg-ligas"><div id="reg-ligas-grid"><div style="text-align:center;padding:28px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+</div>
+<!-- PROCESSOS SELETIVOS -->
+<div class="page" id="page-processos">
+  <div class="section-title">Processos Seletivos</div>
+  <div class="section-sub">Gestão de processos seletivos de todas as ligas — edital, inscrições e resultado.</div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+    <div class="inner-tabs" style="margin-bottom:0"><div class="inner-tab active" onclick="switchTab(this,'ps-ativos')">🟢 Ativos</div><div class="inner-tab" onclick="switchTab(this,'ps-enc')">⚪ Encerrados</div><div class="inner-tab" onclick="switchTab(this,'ps-cand')">👥 Candidatos</div></div>
+    <button class="btn btn-primary btn-sm admin-only" onclick="openModal('modal-novo-ps')"><i class="fas fa-plus"></i> Novo PS</button>
+  </div>
+  <div class="inner-panel active" id="ps-ativos"><div id="ps-ativos-list"><div style="text-align:center;padding:28px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+  <div class="inner-panel" id="ps-enc"><div id="ps-enc-list"><div style="text-align:center;padding:28px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+  <div class="inner-panel" id="ps-cand">
+    <div style="display:flex;gap:10px;margin-bottom:16px"><button class="btn btn-outline btn-sm" onclick="exportarCandidatos()"><i class="fas fa-file-csv"></i> Exportar CSV</button></div>
+    <div class="card" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Nome</th><th>Liga</th><th>PS</th><th>Nota Currículo</th><th>Nota Entrevista</th><th>Status</th><th>Ações</th></tr></thead><tbody id="cand-tbody"><tr><td colspan="7" style="text-align:center;padding:22px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></td></tr></tbody></table></div></div>
+  </div>
+</div>
+<!-- ELEIÇÕES -->
+<div class="page" id="page-eleicoes">
+  <div class="section-title">Eleições</div>
+  <div class="section-sub">Gestão do processo eleitoral da Diretiva e das Ligas Acadêmicas.</div>
+  <div class="grid g2">
+    <div class="card"><div class="card-header"><div class="card-title">Eleições ativas / programadas</div><button class="btn btn-primary btn-sm admin-only" onclick="openModal('modal-nova-eleicao')"><i class="fas fa-plus"></i> Nova eleição</button></div><div id="eleicoes-ativas"><div style="text-align:center;padding:20px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+    <div class="card"><div class="card-header"><div class="card-title">Candidaturas</div><button class="btn btn-outline btn-sm admin-only" onclick="openModal('modal-nova-candidatura')"><i class="fas fa-plus"></i> Registrar</button></div><div id="candidaturas-list"><div style="text-align:center;padding:20px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+  </div>
+  <div class="divider"></div>
+  <div class="card"><div class="card-header"><div class="card-title">Histórico de eleições</div></div><div class="table-wrap"><table><thead><tr><th>Eleição</th><th>Liga / Órgão</th><th>Data</th><th>Vencedor(a)</th><th>Votos</th><th>Status</th></tr></thead><tbody id="eleicoes-historico"><tr><td colspan="6" style="text-align:center;padding:22px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></td></tr></tbody></table></div></div>
+</div>
+<!-- FINANCEIRO -->
+<div class="page" id="page-financeiro">
+  <div class="section-title">Financeiro</div>
+  <div class="section-sub">Controle de caixa, receitas, despesas e prestação de contas da Diretiva.</div>
+  <div class="grid g4">
+    <div class="stat-card" style="--accent:var(--green)"><div class="stat-label">Saldo atual</div><div class="stat-value" style="color:var(--green)" id="fin-saldo"><span class="skel" style="width:80px"></span></div><div class="stat-change up" id="fin-saldo-sub"><i class="fas fa-sync fa-spin" style="font-size:10px"></i> carregando</div><i class="fas fa-wallet stat-icon"></i></div>
+    <div class="stat-card" style="--accent:var(--blue)"><div class="stat-label">Receitas (mês)</div><div class="stat-value" id="fin-rec"><span class="skel" style="width:70px"></span></div><div class="stat-change up" id="fin-rec-sub"><i class="fas fa-arrow-up"></i> carregando</div><i class="fas fa-arrow-trend-up stat-icon"></i></div>
+    <div class="stat-card" style="--accent:var(--red)"><div class="stat-label">Despesas (mês)</div><div class="stat-value" id="fin-desp"><span class="skel" style="width:70px"></span></div><div class="stat-change down" id="fin-desp-sub"><i class="fas fa-arrow-down"></i> carregando</div><i class="fas fa-arrow-trend-down stat-icon"></i></div>
+    <div class="stat-card" style="--accent:var(--yellow)"><div class="stat-label">Próxima prestação</div><div class="stat-value" style="font-size:20px" id="fin-prazo">—</div><div class="stat-change neu"><i class="fas fa-calendar"></i> Prazo institucional</div><i class="fas fa-file-invoice-dollar stat-icon"></i></div>
+  </div>
+  <div class="divider"></div>
+  <div class="grid g2-1">
+    <div class="card"><div class="card-header"><div class="card-title">Movimentações recentes</div><button class="btn btn-primary btn-sm admin-only" onclick="openModal('modal-lancamento')"><i class="fas fa-plus"></i> Lançamento</button></div><div id="fin-movs"><div style="text-align:center;padding:22px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+    <div class="card"><div class="card-header"><div class="card-title">Categorias de despesa</div></div><div id="fin-dist"><div style="text-align:center;padding:22px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+  </div>
+</div>
+<!-- DOCUMENTOS -->
+<div class="page" id="page-documentos">
+  <div class="section-title">Documentos</div>
+  <div class="section-sub">Repositório centralizado de todos os documentos da Diretiva e das ligas.</div>
+  <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center">
+    <div class="search-box" style="flex:1;min-width:180px"><i class="fas fa-search" style="color:var(--text3)"></i><input type="text" id="doc-srch" placeholder="Buscar documento…" oninput="filtrarDocs()"></div>
+    <select class="form-select" id="doc-cat" style="width:auto;padding:7px 12px;font-size:12px" onchange="filtrarDocs()"><option value="">Todas as categorias</option><option>Ata</option><option>Ofício</option><option>Regulamento</option><option>Financeiro</option><option>Processo Seletivo</option><option>Eleição</option><option>Comunicado</option><option>Geral</option></select>
+    <select class="form-select" id="doc-liga-filter" style="width:auto;padding:7px 12px;font-size:12px" onchange="filtrarDocs()"><option value="">Todas as ligas</option><option>Diretiva</option><option>LAPA</option><option>LSM</option><option>LAMF</option><option>LPED</option><option>LENDO</option><option>LGINO</option></select>
+    <button class="btn btn-primary btn-sm admin-only" onclick="openModal('modal-upload-doc')"><i class="fas fa-upload"></i> Enviar arquivo</button>
+  </div>
+  <div class="grid g4" id="docs-grid"></div>
+</div>
+<!-- COMUNICAÇÃO -->
+<div class="page" id="page-comunicacao">
+  <div class="section-title">Comunicação</div>
+  <div class="section-sub">Comunicados institucionais, circulares entre ligas e avisos da Diretiva.</div>
+  <div class="grid g2">
+    <div class="card"><div class="card-header"><div class="card-title">Comunicados recentes</div><div class="card-action" onclick="loadComunicados()">Atualizar</div></div><div id="com-list"><div style="text-align:center;padding:22px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+    <div class="card"><div class="card-header"><div class="card-title">Publicar comunicado</div></div>
+      <div class="form-group"><label class="form-label">Destinatários *</label><select id="com-dest" class="form-select"><option>Todas as ligas</option><option>LAPA</option><option>LSM</option><option>LAMF</option><option>LPED</option><option>LENDO</option><option>LGINO</option><option>Somente presidentes</option><option>Somente secretários</option></select></div>
+      <div class="form-group"><label class="form-label">Assunto *</label><input type="text" id="com-assunto" class="form-input" placeholder="Assunto do comunicado"></div>
+      <div class="form-group"><label class="form-label">Mensagem *</label><textarea id="com-mensagem" class="form-textarea" style="min-height:110px" placeholder="Texto do comunicado…"></textarea></div>
+      <div class="form-group"><label class="form-label">Urgência</label><select id="com-urgencia" class="form-select"><option>Normal</option><option>Urgente</option><option>Informativo</option></select></div>
+      <div style="display:flex;justify-content:flex-end"><button class="btn btn-primary" onclick="enviarComunicado()"><i class="fas fa-paper-plane"></i> Publicar</button></div>
+    </div>
+  </div>
+</div>
+<!-- RELATÓRIOS -->
+<div class="page" id="page-relatorios">
+  <div class="section-title">Relatórios & Indicadores</div>
+  <div class="section-sub">Análise consolidada de todas as ligas para prestação de contas à UNDP.</div>
+  <div class="grid g2">
+    <div class="card"><div class="card-header"><div class="card-title">Membros ativos por liga</div></div><div id="rel-membros" style="min-height:160px"><div style="text-align:center;padding:22px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+    <div class="card"><div class="card-header"><div class="card-title">Eventos realizados por liga (ano)</div></div><div id="rel-eventos" style="min-height:160px"><div style="text-align:center;padding:22px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div></div>
+  </div>
+  <div class="divider"></div>
+  <div class="card"><div class="card-header"><div class="card-title">Exportar relatórios institucionais</div></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-outline" data-exp="membros"><i class="fas fa-users" style="color:var(--blue)"></i> Membros (CSV)</button>
+      <button class="btn btn-outline" data-exp="eventos"><i class="fas fa-calendar" style="color:var(--yellow)"></i> Eventos (CSV)</button>
+      <button class="btn btn-outline" data-exp="financeiro"><i class="fas fa-file-invoice-dollar" style="color:var(--green)"></i> Financeiro (CSV)</button>
+      <button class="btn btn-outline" data-exp="ps"><i class="fas fa-users-gear" style="color:var(--orange)"></i> PS (CSV)</button>
+      <button class="btn btn-outline" data-exp="geral"><i class="fas fa-chart-bar" style="color:var(--purple)"></i> Relatório Geral UNDP</button>
+    </div>
+  </div>
+</div>
+  </div><!-- .content -->
+</div><!-- .main -->
+<!-- MODAIS -->
+<div class="modal-overlay" id="modal-add-membro"><div class="modal"><div class="modal-header"><div class="modal-title">Adicionar Membro</div><button class="modal-close" onclick="closeModal('modal-add-membro')">✕</button></div><div class="form-row"><div class="form-group"><label class="form-label">Nome completo *</label><input id="mb-nome" class="form-input" type="text" placeholder="Nome do membro"></div><div class="form-group"><label class="form-label">Matrícula *</label><input id="mb-mat" class="form-input" type="text" placeholder="Ex: 2023001"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Período</label><select id="mb-per" class="form-select"><option>1º</option><option>2º</option><option>3º</option><option>4º</option><option>5º</option><option>6º</option><option>7º</option><option>8º</option></select></div><div class="form-group"><label class="form-label">Liga *</label><select id="mb-liga" class="form-select"><option>LAPA</option><option>LSM</option><option>LAMF</option><option>LPED</option><option>LENDO</option><option>LGINO</option></select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Cargo</label><select id="mb-cargo" class="form-select"><option>Membro</option><option>Coordenador(a)</option><option>Diretor(a)</option><option>Presidente</option><option>Vice-Presidente</option><option>Secretário(a)</option><option>Tesoureiro(a)</option></select></div><div class="form-group"><label class="form-label">Data de ingresso</label><input id="mb-data" class="form-input" type="date"></div></div><div class="form-group"><label class="form-label">Email</label><input id="mb-email" class="form-input" type="email" placeholder="nome@faculdade.edu.py"></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-add-membro')">Cancelar</button><button class="btn btn-primary" onclick="salvarMembro()"><i class="fas fa-user-plus"></i> Adicionar</button></div></div></div>
+
+<div class="modal-overlay" id="modal-nova-ata"><div class="modal"><div class="modal-header"><div class="modal-title">Nova Ata de Reunião</div><button class="modal-close" onclick="closeModal('modal-nova-ata')">✕</button></div><div class="form-row"><div class="form-group"><label class="form-label">Liga / Órgão *</label><select id="ata-liga" class="form-select"><option>Diretiva</option><option>LAPA</option><option>LSM</option><option>LAMF</option><option>LPED</option><option>LENDO</option><option>LGINO</option></select></div><div class="form-group"><label class="form-label">Tipo</label><select id="ata-tipo" class="form-select"><option>Ordinária</option><option>Extraordinária</option><option>Conjunta</option></select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Data *</label><input id="ata-data" class="form-input" type="date"></div><div class="form-group"><label class="form-label">Horário</label><input id="ata-hora" class="form-input" type="time"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Nº de presentes</label><input id="ata-pres" class="form-input" type="number" placeholder="0"></div><div class="form-group"><label class="form-label">Duração</label><input id="ata-dur" class="form-input" type="text" placeholder="Ex: 1h30min"></div></div><div class="form-group"><label class="form-label">Pauta</label><textarea id="ata-pauta" class="form-textarea" placeholder="Pontos de pauta…"></textarea></div><div class="form-group"><label class="form-label">Deliberações</label><textarea id="ata-delib" class="form-textarea" placeholder="Decisões tomadas…"></textarea></div><div class="form-group"><label class="form-label">Pendências</label><textarea id="ata-pend" class="form-textarea" rows="2" placeholder="Tarefas e assuntos em aberto…"></textarea></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-nova-ata')">Cancelar</button><button class="btn btn-primary" onclick="salvarAta()"><i class="fas fa-save"></i> Salvar ata</button></div></div></div>
+
+<div class="modal-overlay" id="modal-novo-evento"><div class="modal"><div class="modal-header"><div class="modal-title">Novo Evento</div><button class="modal-close" onclick="closeModal('modal-novo-evento')">✕</button></div><div class="form-group"><label class="form-label">Título *</label><input id="ev-titulo" class="form-input" type="text" placeholder="Nome do evento"></div><div class="form-row"><div class="form-group"><label class="form-label">Liga / Órgão *</label><select id="ev-liga" class="form-select"><option>Diretiva</option><option>LAPA</option><option>LSM</option><option>LAMF</option><option>LPED</option><option>LENDO</option><option>LGINO</option><option>Todas</option></select></div><div class="form-group"><label class="form-label">Tipo</label><select id="ev-tipo" class="form-select"><option>Palestra</option><option>Workshop</option><option>Reunião</option><option>Jornada</option><option>Ação de extensão</option><option>Congresso</option><option>Processo Seletivo</option><option>Eleição</option></select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Data *</label><input id="ev-data" class="form-input" type="date"></div><div class="form-group"><label class="form-label">Horário</label><input id="ev-hora" class="form-input" type="time"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Local</label><input id="ev-local" class="form-input" type="text" placeholder="Ex: Auditório UNDP"></div><div class="form-group"><label class="form-label">Responsável</label><input id="ev-resp" class="form-input" type="text" placeholder="Nome e cargo"></div></div><div class="form-group"><label class="form-label">Descrição</label><textarea id="ev-desc" class="form-textarea" placeholder="Descreva o evento…"></textarea></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-novo-evento')">Cancelar</button><button class="btn btn-primary" onclick="salvarEvento()"><i class="fas fa-calendar-plus"></i> Criar evento</button></div></div></div>
+
+<div class="modal-overlay" id="modal-novo-ps"><div class="modal"><div class="modal-header"><div class="modal-title">Novo Processo Seletivo</div><button class="modal-close" onclick="closeModal('modal-novo-ps')">✕</button></div><div class="form-row"><div class="form-group"><label class="form-label">Liga *</label><select id="ps-liga" class="form-select"><option>LAPA</option><option>LSM</option><option>LAMF</option><option>LPED</option><option>LENDO</option><option>LGINO</option></select></div><div class="form-group"><label class="form-label">Nº de vagas *</label><input id="ps-vagas" class="form-input" type="number" placeholder="0"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Abertura *</label><input id="ps-ini" class="form-input" type="date"></div><div class="form-group"><label class="form-label">Encerramento</label><input id="ps-fim" class="form-input" type="date"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Data da entrevista</label><input id="ps-entrev" class="form-input" type="date"></div><div class="form-group"><label class="form-label">Data do resultado</label><input id="ps-res" class="form-input" type="date"></div></div><div class="form-group"><label class="form-label">Critérios de seleção</label><textarea id="ps-criterios" class="form-textarea" placeholder="Análise curricular, entrevista, etc.…"></textarea></div><div class="form-group"><label class="form-label">Link do edital (Drive)</label><input id="ps-edital" class="form-input" type="url" placeholder="https://drive.google.com/…"></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-novo-ps')">Cancelar</button><button class="btn btn-primary" onclick="salvarPS()"><i class="fas fa-save"></i> Criar PS</button></div></div></div>
+
+<div class="modal-overlay" id="modal-nova-eleicao"><div class="modal"><div class="modal-header"><div class="modal-title">Nova Eleição</div><button class="modal-close" onclick="closeModal('modal-nova-eleicao')">✕</button></div><div class="form-row"><div class="form-group"><label class="form-label">Órgão / Liga *</label><select id="el-orgao" class="form-select"><option>Diretiva</option><option>LAPA</option><option>LSM</option><option>LAMF</option><option>LPED</option><option>LENDO</option><option>LGINO</option></select></div><div class="form-group"><label class="form-label">Cargo em disputa *</label><input id="el-cargo" class="form-input" type="text" placeholder="Ex: Presidente da Diretiva"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Data da eleição *</label><input id="el-data" class="form-input" type="date"></div><div class="form-group"><label class="form-label">Prazo de inscrição</label><input id="el-prazo" class="form-input" type="date"></div></div><div class="form-group"><label class="form-label">Regras / Eleitorado</label><textarea id="el-regras" class="form-textarea" placeholder="Quem pode votar, quem pode se candidatar…"></textarea></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-nova-eleicao')">Cancelar</button><button class="btn btn-primary" onclick="salvarEleicao()"><i class="fas fa-ballot-check"></i> Criar eleição</button></div></div></div>
+
+<div class="modal-overlay" id="modal-lancamento"><div class="modal"><div class="modal-header"><div class="modal-title">Novo Lançamento Financeiro</div><button class="modal-close" onclick="closeModal('modal-lancamento')">✕</button></div><div class="form-row"><div class="form-group"><label class="form-label">Tipo</label><select id="fin-tipo" class="form-select"><option>Receita</option><option>Despesa</option></select></div><div class="form-group"><label class="form-label">Valor (₲) *</label><input id="fin-valor" class="form-input" type="number" placeholder="0" step="1"></div></div><div class="form-group"><label class="form-label">Descrição *</label><input id="fin-desc-inp" class="form-input" type="text" placeholder="Descreva o lançamento"></div><div class="form-row"><div class="form-group"><label class="form-label">Categoria</label><select id="fin-cat" class="form-select"><option>Administrativo</option><option>Eventos</option><option>Material</option><option>Patrocínio</option><option>Taxa de inscrição</option><option>Geral</option></select></div><div class="form-group"><label class="form-label">Data</label><input id="fin-data" class="form-input" type="date"></div></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-lancamento')">Cancelar</button><button class="btn btn-primary" onclick="salvarLanc()"><i class="fas fa-save"></i> Registrar</button></div></div></div>
+
+<div class="modal-overlay" id="modal-upload-doc"><div class="modal"><div class="modal-header"><div class="modal-title">Enviar Documento</div><button class="modal-close" onclick="closeModal('modal-upload-doc')">✕</button></div><div class="form-group"><label class="form-label">Arquivo</label><input id="doc-file" class="form-input" type="file" style="padding:8px;cursor:pointer" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.png,.zip"><div style="font-size:11px;color:var(--text3);margin-top:4px">Máx. 20 MB — ou cole o link do Drive abaixo</div></div><div class="form-row"><div class="form-group"><label class="form-label">Nome de exibição</label><input id="doc-nome" class="form-input" type="text" placeholder="Ex: Ata Reunião Abril 2026"></div><div class="form-group"><label class="form-label">Categoria</label><select id="doc-cat-sel" class="form-select"><option>Ata</option><option>Ofício</option><option>Regulamento</option><option>Financeiro</option><option>Processo Seletivo</option><option>Eleição</option><option>Comunicado</option><option>Geral</option></select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Liga / Órgão</label><select id="doc-liga-sel" class="form-select"><option>Diretiva</option><option>LAPA</option><option>LSM</option><option>LAMF</option><option>LPED</option><option>LENDO</option><option>LGINO</option></select></div><div class="form-group"><label class="form-label">Link Google Drive (opcional)</label><input id="doc-url" class="form-input" type="url" placeholder="https://drive.google.com/…"></div></div><div id="upload-prog" style="display:none;margin:12px 0"><div class="progress-bar" style="height:7px"><div class="progress-fill" id="upload-prog-fill" style="width:0%"></div></div><div id="upload-prog-msg" style="font-size:11px;color:var(--text3);margin-top:5px;text-align:center"></div></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-upload-doc')">Cancelar</button><button class="btn btn-primary" id="btn-upload" onclick="executarUpload()"><i class="fas fa-upload"></i> Enviar</button></div></div></div>
+
+<div class="modal-overlay" id="modal-nova-corr"><div class="modal"><div class="modal-header"><div class="modal-title">Nova Correspondência</div><button class="modal-close" onclick="closeModal('modal-nova-corr')">✕</button></div><div class="form-row"><div class="form-group"><label class="form-label">Tipo</label><select id="corr-tipo" class="form-select"><option>Ofício</option><option>Carta</option><option>Email institucional</option><option>Memorando</option></select></div><div class="form-group"><label class="form-label">Direção</label><select id="corr-dir" class="form-select"><option>Enviada</option><option>Recebida</option></select></div></div><div class="form-group"><label class="form-label">Destinatário / Remetente *</label><input id="corr-dest" class="form-input" type="text" placeholder="Nome ou órgão"></div><div class="form-group"><label class="form-label">Assunto *</label><input id="corr-assunto-inp" class="form-input" type="text" placeholder="Assunto"></div><div class="form-group"><label class="form-label">Corpo</label><textarea id="corr-corpo" class="form-textarea" style="min-height:110px" placeholder="Conteúdo da correspondência…"></textarea></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-nova-corr')">Cancelar</button><button class="btn btn-primary" onclick="salvarCorr()"><i class="fas fa-paper-plane"></i> Registrar</button></div></div></div>
+
+<div class="modal-overlay" id="modal-novo-oficio"><div class="modal"><div class="modal-header"><div class="modal-title">Novo Ofício</div><button class="modal-close" onclick="closeModal('modal-novo-oficio')">✕</button></div><div class="form-row"><div class="form-group"><label class="form-label">Número *</label><input id="of-num" class="form-input" type="text" placeholder="Ex: OF-001/2026"></div><div class="form-group"><label class="form-label">Data *</label><input id="of-data" class="form-input" type="date"></div></div><div class="form-group"><label class="form-label">Destinatário *</label><input id="of-dest" class="form-input" type="text" placeholder="Coordenação, Reitoria, etc."></div><div class="form-group"><label class="form-label">Assunto *</label><input id="of-assunto" class="form-input" type="text" placeholder="Assunto do ofício"></div><div class="form-group"><label class="form-label">Corpo do ofício</label><textarea id="of-corpo" class="form-textarea" style="min-height:120px" placeholder="Texto do ofício…"></textarea></div><div class="form-group"><label class="form-label">Link no Drive (opcional)</label><input id="of-link" class="form-input" type="url" placeholder="https://drive.google.com/…"></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-novo-oficio')">Cancelar</button><button class="btn btn-primary" onclick="salvarOficio()"><i class="fas fa-file-signature"></i> Registrar ofício</button></div></div></div>
+
+<div class="modal-overlay" id="modal-nova-candidatura"><div class="modal"><div class="modal-header"><div class="modal-title">Nova Candidatura</div><button class="modal-close" onclick="closeModal('modal-nova-candidatura')">✕</button></div><div class="form-row"><div class="form-group"><label class="form-label">Candidato(a) *</label><input id="cand-nome" class="form-input" type="text" placeholder="Nome completo"></div><div class="form-group"><label class="form-label">Eleição *</label><input id="cand-eleicao" class="form-input" type="text" placeholder="Nome da eleição"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Chapa</label><input id="cand-chapa" class="form-input" type="text" placeholder="Nome da chapa"></div><div class="form-group"><label class="form-label">Cargo disputado</label><input id="cand-cargo-el" class="form-input" type="text" placeholder="Ex: Presidente"></div></div><div class="form-group"><label class="form-label">Proposta (resumo)</label><textarea id="cand-proposta" class="form-textarea" placeholder="Principais propostas…"></textarea></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-nova-candidatura')">Cancelar</button><button class="btn btn-primary" onclick="salvarCandidatura()"><i class="fas fa-save"></i> Registrar</button></div></div></div>
+
+<div class="modal-overlay" id="modal-edit-diretiva"><div class="modal" style="width:600px"><div class="modal-header"><div class="modal-title">Composição da Diretiva</div><button class="modal-close" onclick="closeModal('modal-edit-diretiva')">✕</button></div><div id="form-diretiva"></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-edit-diretiva')">Cancelar</button><button class="btn btn-primary" onclick="salvarDiretiva()"><i class="fas fa-save"></i> Salvar composição</button></div></div></div>
+
+<div class="modal-overlay" id="modal-notif"><div class="modal" style="width:440px"><div class="modal-header"><div class="modal-title"><i class="fas fa-bell" style="color:var(--cyan);margin-right:8px"></i>Notificações</div><button class="modal-close" onclick="closeModal('modal-notif')">✕</button></div><div id="notif-list" style="max-height:360px;overflow-y:auto"><div style="text-align:center;padding:22px;color:var(--text3)"><i class="fas fa-spinner fa-spin"></i></div></div><div class="modal-footer"><button class="btn btn-primary" onclick="closeModal('modal-notif')">Fechar</button></div></div></div>
+
+<div class="modal-overlay" id="modal-cfg"><div class="modal"><div class="modal-header"><div class="modal-title"><i class="fas fa-gear" style="color:var(--cyan);margin-right:8px"></i>Configurações</div><button class="modal-close" onclick="closeModal('modal-cfg')">✕</button></div>
+<div class="form-group"><label class="form-label">URL do Google Apps Script (API)</label><div style="display:flex;gap:8px"><input id="cfg-api" class="form-input" type="text" placeholder="https://script.google.com/macros/s/…/exec"><button class="btn btn-outline btn-sm" style="white-space:nowrap;flex-shrink:0" onclick="testApi()"><i class="fas fa-satellite-dish"></i> Testar</button></div><div style="font-size:11px;color:var(--text3);margin-top:4px">Cole a URL do seu Apps Script conectado ao Google Sheets.</div></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Ano letivo</label><input id="cfg-ano" class="form-input" type="number" placeholder="2026" value="2026"></div><div class="form-group"><label class="form-label">Próxima prestação de contas</label><input id="cfg-prazo" class="form-input" type="date"></div></div>
+<div style="background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius2);padding:14px;margin-top:4px">
+  <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">🚀 Inicialização da Planilha</div>
+  <div style="font-size:12px;color:var(--text2);margin-bottom:10px">Clique abaixo para criar automaticamente todas as abas no Google Drive da conta vinculada ao Apps Script.</div>
+  <button id="btn-init-sheet" class="btn btn-primary btn-sm" onclick="initPlanilha()" style="width:100%;justify-content:center"><i class="fas fa-wand-magic-sparkles"></i> Inicializar planilha no Drive</button>
+  <div id="init-result" style="margin-top:8px"></div>
+</div>
+<div style="background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius2);padding:14px;margin-top:10px">
+  <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">📋 Sheets gerenciadas</div>
+  <div style="font-size:12px;color:var(--text2);line-height:2;font-family:'DM Mono',monospace">Membros · Eventos · Atas · Correspondencias · Oficios · PS · Candidatos · Eleicoes · Candidaturas · Financeiro · Documentos · Comunicados · Configuracoes</div>
+</div>
+<div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('modal-cfg')">Cancelar</button><button class="btn btn-primary" onclick="salvarCfg()"><i class="fas fa-save"></i> Salvar</button></div></div></div>
+
+<div class="modal-overlay" id="modal-confirm" style="z-index:99999"><div class="modal" style="width:380px;text-align:center"><div class="confirm-icon" id="conf-icon-wrap"><i class="fas fa-exclamation-triangle" id="conf-icon"></i></div><div class="modal-title" id="conf-title" style="justify-content:center;font-size:16px;margin-bottom:10px">Confirmar ação</div><p id="conf-msg" style="font-size:13.5px;color:var(--text2);line-height:1.6;margin-bottom:22px"></p><div style="display:flex;gap:10px;justify-content:center"><button class="btn btn-outline" onclick="closeModal('modal-confirm')" style="min-width:100px">Cancelar</button><button class="btn btn-danger" id="conf-ok" style="min-width:100px">Confirmar</button></div></div></div>
+<script>
+'use strict';
+// ── API ──────────────────────────────────────────────────────
+// Persiste a URL da API entre sessões via localStorage
+var API_URL = localStorage.getItem('dlt-api-url') || '';
+const _cache = {}, _TTL = 30000;
+
+// Indicador de conexão no topbar
+function _updateApiStatus(ok){
+  const el=document.getElementById('api-status');
+  if(!el)return;
+  if(!API_URL){el.innerHTML='<i class="fas fa-plug-circle-xmark"></i> API não configurada';el.style.color='var(--red)';return;}
+  el.innerHTML=ok?'<i class="fas fa-circle" style="font-size:8px"></i> API conectada':'<i class="fas fa-triangle-exclamation"></i> Falha na API';
+  el.style.color=ok?'var(--green)':'var(--orange)';
+}
+async function _pingApi(){
+  if(!API_URL){_updateApiStatus(false);return;}
+  try{const r=await fetch(API_URL+'?action=ping');const d=await r.json();_updateApiStatus(d.success);}
+  catch{_updateApiStatus(false);}
+}
+// Inicializa planilha via API
+async function initPlanilha(){
+  if(!API_URL){showToast('Configure e salve a URL da API primeiro.','warning');return;}
+  const btn=document.getElementById('btn-init-sheet');
+  if(btn){btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Criando abas...';}
+  try{
+    const r=await fetch(API_URL+'?action=setup');
+    const d=await r.json();
+    if(d.success){
+      showToast('Planilha inicializada! Todas as abas criadas.','success');
+      if(d.data?.url){
+        const a=document.createElement('a');a.href=d.data.url;a.target='_blank';
+        a.innerHTML='<i class="fas fa-table"></i> Abrir planilha';
+        a.className='btn btn-outline btn-sm';a.style.cssText='margin-top:12px;display:flex;width:fit-content;';
+        document.getElementById('init-result')?.replaceChildren(a);
+      }
+    }else throw new Error(d.error);
+  }catch(e){showToast('Erro ao inicializar: '+e.message,'error');}
+  finally{if(btn){btn.disabled=false;btn.innerHTML='<i class="fas fa-wand-magic-sparkles"></i> Inicializar planilha no Drive';}}
+}
+async function apiGet(p){
+  if(!API_URL) return null;
+  const k=JSON.stringify(p);
+  if(_cache[k]&&Date.now()-_cache[k].ts<_TTL) return _cache[k].d;
+  try{
+    const r=await fetch(API_URL+'?'+new URLSearchParams(p));
+    const d=await r.json();
+    if(!d.success) throw new Error(d.error||'Erro');
+    const n=Array.isArray(d.data)?d.data.map(nr):d.data;
+    _cache[k]={d:n,ts:Date.now()}; return n;
+  }catch(e){console.warn('apiGet:',e.message);return null;}
+}
+function nr(r){
+  if(!r) return r;
+  if(r.id!==undefined&&r.ID===undefined) r.ID=r.id;
+  if(r.ID!==undefined&&r.id===undefined) r.id=r.ID;
+  ['Data','DataIngresso','DataAbertura','DataEncerramento','DataResultado','DataEleicao'].forEach(f=>{
+    if(r[f]&&typeof r[f]==='string'&&r[f].length>10) r[f]=r[f].substring(0,10);
+  });
+  return r;
+}
+async function apiPost(payload){
+  if(!API_URL){showToast('Configure a URL da API em Configurações.','warning');return null;}
+  try{
+    const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)});
+    const d=await r.json();
+    if(!d.success) throw new Error(d.error||'Erro');
+    if(payload.sheet) delete _cache[JSON.stringify({action:'getAll',sheet:payload.sheet})];
+    return d.data;
+  }catch(e){throw e;}
+}
+
+// ── LIGAS CONFIG ─────────────────────────────────────────────
+const LIGAS=[
+  {sigla:'LAPA', nome:'Liga de Primeiros Auxilios',        cor:'#00cfff', emoji:'🩺', desc:'Emergências, RCP e primeiros socorros.'},
+  {sigla:'LSM',  nome:'Liga de Saúde Mental',              cor:'#a855f7', emoji:'🧠', desc:'Saúde mental, acolhimento e bem-estar.'},
+  {sigla:'LAMF', nome:'Liga de Medicina Forense',          cor:'#f5c518', emoji:'⚖️', desc:'Medicina legal, perícias e toxicologia.'},
+  {sigla:'LPED', nome:'Liga de Pediatria',                 cor:'#00d48a', emoji:'👶', desc:'Saúde da criança e adolescente.'},
+  {sigla:'LENDO',nome:'Liga de Endocrinologia',            cor:'#ff6b2b', emoji:'🔬', desc:'Metabolismo, hormônios e diabetes.'},
+  {sigla:'LGINO',nome:'Liga de Ginecologia e Obstetrícia', cor:'#ff7eb3', emoji:'♀️', desc:'Saúde da mulher, obstetrícia e ginecologia.'},
+];
+function getLiga(s){return LIGAS.find(l=>l.sigla===s)||{sigla:s,nome:s,cor:'var(--blue)',emoji:'🏛️',desc:''};}
+
+// ── CREDENCIAIS PBKDF2 ───────────────────────────────────────
+// === SENHAS ===
+// Admin (Secretaria): Diretiva@2026
+// Membro:             Ligas@2026
+// Para trocar: gere o SHA-256 de (salt+novaSenha) e atualize os hashes abaixo.
+const CREDS={
+  admin: { salt:'diretiva-adm-2026', hash:'57b3feddfba3930fdd59d649ac809adef12c7e5cea178117f6ebf1a40712388f' },
+  membro:{ salt:'diretiva-mbr-2026', hash:'4a9fda3ff4e4a91d7f2b7b929a582b3f457b7bd1c57c0aa55abc3de54af0d9ba' }
+};
+async function _genHash(senha,papel){
+  const enc=new TextEncoder();
+  const data=enc.encode(CREDS[papel].salt+senha);
+  const buf=await crypto.subtle.digest('SHA-256',data);
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+function _secEq(a,b){if(a.length!==b.length)return false;let d=0;for(let i=0;i<a.length;i++)d|=a.charCodeAt(i)^b.charCodeAt(i);return d===0;}
+const _ls={tries:0,blockedUntil:0,cycle:0,max:5,delays:[30,120,300,900]};
+function _blocked(){return Date.now()<_ls.blockedUntil;}
+function _regFail(){_ls.tries++;if(_ls.tries>=_ls.max){const d=_ls.delays[Math.min(_ls.cycle,3)];_ls.blockedUntil=Date.now()+d*1000;_ls.tries=0;_ls.cycle++;return d;}return 0;}
+function _resetFail(){_ls.tries=0;_ls.blockedUntil=0;_ls.cycle=0;}
+
+// ── LOGIN ────────────────────────────────────────────────────
+let currentRole=null, selRoleVal='admin';
+function selRole(r){
+  selRoleVal=r;
+  document.getElementById('tab-adm').classList.toggle('active',r==='admin');
+  document.getElementById('tab-mem').classList.toggle('active',r==='membro');
+  clearLoginErr();
+}
+async function doLogin(){
+  const btn=document.getElementById('login-btn');
+  if(_blocked()){const l=Math.ceil((_ls.blockedUntil-Date.now())/1000);showLoginErr('Aguarde '+l+'s.');return;}
+  const senha=document.getElementById('senha-input').value.trim();
+  if(!senha){showLoginErr('Informe a senha.');return;}
+  btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Verificando…';
+  try{
+    const hash=await _genHash(senha,selRoleVal);
+    if(_secEq(hash,CREDS[selRoleVal].hash)){_resetFail();loginOk(selRoleVal);}
+    else{
+      const d=_regFail();
+      const left=_ls.max-_ls.tries;
+      showLoginErr(d>0?'Bloqueado por '+d+'s.':'Senha incorreta. '+left+' tentativa(s).');
+      btn.disabled=false;btn.innerHTML='<i class="fas fa-sign-in-alt"></i> Entrar';
+    }
+  }catch(e){showLoginErr('Erro de verificação.');btn.disabled=false;btn.innerHTML='<i class="fas fa-sign-in-alt"></i> Entrar';}
+}
+function loginOk(role){
+  currentRole=role;sessionStorage.setItem('dlt-role',role);
+  document.body.classList.toggle('is-admin',role==='admin');
+  const tb=document.getElementById('tb-role-badge');
+  tb.style.display='';tb.className='role-badge '+(role==='admin'?'rb-admin':'rb-membro');
+  tb.innerHTML=role==='admin'?'<i class="fas fa-shield-halved"></i> Secretaria':'<i class="fas fa-user"></i> Membro';
+  document.getElementById('sb-avatar').textContent=role==='admin'?'S':'M';
+  document.getElementById('sb-name').textContent=role==='admin'?'Secretaria':'Membro';
+  document.getElementById('sb-role').textContent=role==='admin'?'Administrador':'Membro da Liga';
+  const s=document.getElementById('login-screen');
+  s.style.transition='opacity .4s';s.style.opacity='0';setTimeout(()=>s.style.display='none',400);
+  bindButtons();loadHomeStats();
+  showToast(role==='admin'?'Bem-vindo(a), Secretaria!':'Bem-vindo(a)!','success');
+}
+function doLogout(){
+  customConfirm({title:'Sair',message:'Deseja encerrar a sessão?',confirmLabel:'Sair',onConfirm:()=>{
+    currentRole=null;sessionStorage.removeItem('dlt-role');
+    document.body.classList.remove('is-admin');
+    document.getElementById('senha-input').value='';clearLoginErr();
+    const s=document.getElementById('login-screen');s.style.display='flex';s.style.opacity='0';
+    setTimeout(()=>{s.style.transition='opacity .4s';s.style.opacity='1';},10);
+  }});
+}
+function showLoginErr(m){document.getElementById('login-err-msg').textContent=m;document.getElementById('login-err').classList.add('show');}
+function clearLoginErr(){document.getElementById('login-err').classList.remove('show');}
+function togglePass(){const i=document.getElementById('senha-input'),e=document.getElementById('pass-eye');i.type=i.type==='password'?'text':'password';e.className='toggle-pass fas '+(i.type==='password'?'fa-eye':'fa-eye-slash');}
+function isAdmin(){return currentRole==='admin';}
+function reqAdmin(act){if(isAdmin())return true;showToast('Apenas administradores podem '+(act||'realizar esta ação')+'.','warning');return false;}
+
+// ── HELPERS ──────────────────────────────────────────────────
+function esc(s){if(s==null)return '';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function fmtDate(v){if(!v)return '—';const d=new Date(String(v).substring(0,10)+'T00:00:00');return isNaN(d)?String(v):d.toLocaleDateString('pt-BR');}
+function fmtGs(v,abrev=true){const abs=Math.abs(Math.round(v));if(!abrev||abs<1000)return '₲ '+abs.toLocaleString('es-PY');if(abs<1e6)return '₲ '+(abs/1000).toLocaleString('es-PY',{maximumFractionDigits:1})+' Mil';return '₲ '+(abs/1e6).toLocaleString('es-PY',{maximumFractionDigits:1})+' Mi';}
+function statusCls(s){const m={Ativo:'b-green',Ativa:'b-green',Aprovado:'b-green',Confirmado:'b-blue',Encerrado:'b-gray',Realizado:'b-green',Publicado:'b-green',Cancelado:'b-red',Pendente:'b-orange','Em andamento':'b-blue',Aberto:'b-cyan',Aberta:'b-cyan',Adiado:'b-yellow',Rascunho:'b-gray','Pendente assinatura':'b-orange',Afastado:'b-orange',Desligado:'b-red','Em análise':'b-yellow'};return m[s]||'b-gray';}
+function setEl(id,v){const e=document.getElementById(id);if(e)e.innerHTML=v;}
+function setText(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
+function setEmpty(id,ico,msg){setEl(id,`<div style="text-align:center;padding:28px;color:var(--text3)"><i class="fas ${ico}" style="font-size:24px;display:block;margin-bottom:10px;opacity:.3"></i>${msg}</div>`);}
+function animCount(el,target,suf=''){if(!el)return;let cur=0,step=Math.max(1,Math.floor(target/50));const t=setInterval(()=>{cur=Math.min(cur+step,target);el.textContent=cur+suf;if(cur>=target)clearInterval(t);},25);}
+
+// ── TOAST ────────────────────────────────────────────────────
+function showToast(msg,type='success'){
+  const c={success:'var(--green)',error:'var(--red)',info:'var(--cyan)',warning:'var(--yellow)'};
+  const i={success:'fa-check-circle',error:'fa-exclamation-circle',info:'fa-info-circle',warning:'fa-exclamation-triangle'};
+  document.querySelectorAll('.dlt-toast').forEach(t=>t.remove());
+  const t=document.createElement('div');t.className='dlt-toast';
+  t.style.cssText=`position:fixed;bottom:22px;right:22px;z-index:99999;background:var(--card);border:1px solid ${c[type]};border-left:4px solid ${c[type]};color:var(--text);padding:13px 18px;border-radius:10px;font-size:13.5px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:fadeUp .3s ease;max-width:360px;font-family:'DM Sans',sans-serif;`;
+  t.innerHTML=`<i class="fas ${i[type]}" style="color:${c[type]};font-size:15px;flex-shrink:0"></i><span>${msg}</span>`;
+  document.body.appendChild(t);
+  setTimeout(()=>{t.style.transition='opacity .3s';t.style.opacity='0';setTimeout(()=>t.remove(),310);},3800);
+}
+
+// ── CONFIRM ──────────────────────────────────────────────────
+let _confCb=null;
+function customConfirm({title,message,confirmLabel='Confirmar',icon='fa-exclamation-triangle',iconColor='var(--red)',onConfirm}){
+  _confCb=onConfirm;
+  document.getElementById('conf-icon').className='fas '+icon;
+  document.getElementById('conf-icon').style.color=iconColor;
+  document.getElementById('conf-icon-wrap').style.cssText='width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 16px;background:rgba(255,68,68,.12);border:1px solid rgba(255,68,68,.25)';
+  setText('conf-title',title||'Confirmar');setEl('conf-msg',message||'');setText('conf-ok',confirmLabel);
+  openModal('modal-confirm');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('conf-ok')?.addEventListener('click',()=>{closeModal('modal-confirm');if(typeof _confCb==='function'){_confCb();_confCb=null;}});
+});
+
+// ── MODAIS ───────────────────────────────────────────────────
+const _adminModals=['modal-add-membro','modal-nova-ata','modal-lancamento','modal-novo-evento','modal-novo-ps','modal-nova-eleicao','modal-upload-doc','modal-nova-corr','modal-novo-oficio','modal-nova-candidatura','modal-edit-diretiva','modal-cfg'];
+function openModal(id){
+  if(_adminModals.includes(id)&&!isAdmin()){showToast('Apenas administradores podem acessar esta função.','warning');return;}
+  if(id==='modal-notif') carregarNotif();
+  const m=document.getElementById(id);if(m){m.classList.add('open');m.querySelector('input,textarea,select')?.focus();}
+}
+function closeModal(id){
+  const m=document.getElementById(id);if(!m)return;m.classList.remove('open');
+  m.querySelectorAll('input:not([type=file]),textarea').forEach(i=>{if(i.type!=='button')i.value='';});
+  m.querySelectorAll('select').forEach(s=>s.selectedIndex=0);
+}
+document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)closeModal(o.id);}));
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m=>closeModal(m.id));
+  if(e.key==='Enter'){const ls=document.getElementById('login-screen');if(ls&&ls.style.display!=='none'&&ls.style.opacity!=='0')doLogin();}
+});
+
+// ── NAVEGAÇÃO ────────────────────────────────────────────────
+const PAGE_TITLES={home:'Painel Geral',ligas:'Ligas Acadêmicas',agenda:'Agenda Unificada',membros:'Membros',secretaria:'Secretaria',regulamentos:'Regulamentos',processos:'Processos Seletivos',eleicoes:'Eleições',financeiro:'Financeiro',documentos:'Documentos',comunicacao:'Comunicação',relatorios:'Relatórios'};
+const PAGE_LOADERS={home:loadHomeStats,ligas:loadLigas,agenda:loadAgenda,membros:loadMembros,secretaria:loadSecretaria,regulamentos:loadRegulamentos,processos:loadProcessos,eleicoes:loadEleicoes,financeiro:loadFinanceiro,documentos:loadDocumentos,comunicacao:loadComunicados,relatorios:loadRelatorios};
+function goPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const p=document.getElementById('page-'+id);if(p)p.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(i=>i.classList.toggle('active',(i.getAttribute('onclick')||'').includes("'"+id+"'")));
+  setText('pg-title',PAGE_TITLES[id]||id);
+  document.querySelector('.content').scrollTop=0;
+  if(PAGE_LOADERS[id])PAGE_LOADERS[id]();
+  if(window.innerWidth<=900)closeSidebar();
+}
+function switchTab(el,panelId){
+  const tabs=el.closest('.inner-tabs')||el.parentElement;
+  tabs.querySelectorAll('.inner-tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');
+  const area=(tabs.closest('.page')||tabs.parentElement);
+  area.querySelectorAll('.inner-panel').forEach(p=>p.classList.remove('active'));
+  const panel=document.getElementById(panelId);if(panel)panel.classList.add('active');
+}
+function toggleSidebar(){const sb=document.getElementById('sidebar'),ov=document.getElementById('mob-overlay');sb.classList.toggle('open');ov.classList.toggle('vis');}
+function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('mob-overlay').classList.remove('vis');}
+
+// ── ALL DATA ─────────────────────────────────────────────────
+let _D={};
+async function fetchAll(){
+  const sheets=['Membros','Eventos','PS','Eleicoes','Financeiro','Atas','Correspondencias','Documentos','Oficios','Comunicados','Candidaturas','Candidatos','Configuracoes'];
+  const res=await Promise.allSettled(sheets.map(s=>apiGet({action:'getAll',sheet:s}).then(d=>({s,d}))));
+  res.forEach(r=>{if(r.status==='fulfilled'&&r.value)_D[r.value.s]=r.value.d||[];});
+  return _D;
+}
+
+// ── HOME ─────────────────────────────────────────────────────
+async function loadHomeStats(){
+  try{
+    await fetchAll();
+    const membros=_D.Membros||[],eventos=_D.Eventos||[],ps=_D.PS||[],atas=_D.Atas||[];
+    const hoje=new Date();hoje.setHours(0,0,0,0);
+    const inicioSem=new Date(hoje.getFullYear(),hoje.getMonth()<6?0:6,1);
+    const ativos=membros.filter(m=>m.Status==='Ativo').length;
+    const evSem=eventos.filter(e=>{const d=new Date((e.Data||'')+'T00:00:00');return d>=inicioSem;}).length;
+    animCount(document.getElementById('kpi-membros'),membros.length);
+    animCount(document.getElementById('kpi-eventos'),evSem);
+    setText('st-membros',ativos);
+    setEl('st-membros-sub','<i class="fas fa-arrow-up" style="color:var(--green)"></i> <span style="color:var(--text2)">'+membros.length+' total cadastrados</span>');
+    const psAtivos=ps.filter(p=>p.Status==='Aberto');
+    setText('st-ps',psAtivos.length);
+    setEl('st-ps-sub','<i class="fas fa-circle-dot"></i> <span style="color:var(--text2)">'+psAtivos.length+' liga(s) recrutando</span>');
+    const proxEvs=eventos.filter(e=>new Date((e.Data||'')+'T00:00:00')>=hoje).sort((a,b)=>new Date(a.Data)-new Date(b.Data));
+    if(proxEvs.length){const ev=proxEvs[0];const d=new Date(ev.Data+'T00:00:00');setText('st-evento',d.toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}).replace('.',''));setEl('st-evento-sub','<i class="fas fa-map-pin"></i> <span style="color:var(--text2)">'+esc(ev.Liga||'—')+' · '+esc(ev.Local||'—')+'</span>');}
+    else{setText('st-evento','—');setEl('st-evento-sub','Sem próximos eventos');}
+    const pend=atas.filter(a=>a.Status==='Pendente assinatura').length;
+    setText('st-docs',pend);setEl('st-docs-sub','<i class="fas fa-file-circle-exclamation"></i> <span style="color:var(--text2)">'+pend+' ata(s) pendente(s)</span>');
+    // cards das 6 ligas
+    const hg=document.getElementById('home-ligas-grid');if(hg){hg.innerHTML='';LIGAS.forEach(l=>renderLigaCard(l,_D,hg,'home'));}
+    renderHomeAgenda(proxEvs.slice(0,5));renderDonut(_D);renderHomePSList(psAtivos);renderHomeSec(atas);
+    // badges sidebar
+    document.getElementById('nb-agenda').textContent=proxEvs.filter(e=>{const d=new Date((e.Data||'')+'T00:00:00'),em30=new Date(hoje);em30.setDate(hoje.getDate()+30);return d<=em30;}).length;
+    document.getElementById('nb-agenda').style.display=proxEvs.length?'':'none';
+    document.getElementById('nb-ps').textContent=psAtivos.length;document.getElementById('nb-ps').style.display=psAtivos.length?'':'none';
+  }catch(e){console.warn('loadHomeStats:',e);}
+}
+function renderLigaCard(liga,data,container,mode){
+  const membros=(data.Membros||[]).filter(m=>m.Liga===liga.sigla);
+  const ativos=membros.filter(m=>m.Status==='Ativo').length;
+  const hoje=new Date();hoje.setHours(0,0,0,0);
+  const eventos=(data.Eventos||[]).filter(e=>e.Liga===liga.sigla);
+  const proxEvs=eventos.filter(e=>new Date((e.Data||'')+'T00:00:00')>=hoje).length;
+  const pss=(data.PS||[]).filter(p=>p.Liga===liga.sigla&&p.Status==='Aberto');
+  const card=document.createElement('div');card.className='liga-card';card.style.setProperty('--liga-cor',liga.cor);
+  if(mode==='detail'){
+    card.innerHTML=`<div class="liga-card-header"><div class="liga-emblem"><span style="font-size:20px">${liga.emoji}</span></div><div><div class="liga-sigla">${esc(liga.sigla)}</div><h3>${esc(liga.nome)}</h3></div></div><div style="font-size:12px;color:var(--text2);margin-bottom:14px;line-height:1.5">${esc(liga.desc)}</div><div class="liga-stats" style="flex-wrap:wrap"><div class="liga-stat"><div class="v">${ativos}</div><div class="l">Ativos</div></div><div class="liga-stat"><div class="v">${proxEvs}</div><div class="l">Próx. eventos</div></div><div class="liga-stat"><div class="v">${pss.length}</div><div class="l">PS aberto</div></div><div class="liga-stat"><div class="v">${membros.length}</div><div class="l">Total</div></div></div><div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap"><button class="btn btn-outline btn-xs" onclick="filtrarLigaMbr('${esc(liga.sigla)}')"><i class="fas fa-users"></i> Membros</button><button class="btn btn-outline btn-xs" onclick="filtrarLigaAgenda('${esc(liga.sigla)}')"><i class="fas fa-calendar"></i> Eventos</button>${isAdmin()?'<button class="btn btn-outline btn-xs admin-only" onclick="openModal(\'modal-add-membro\')"><i class="fas fa-user-plus"></i> Membro</button>':''}</div>`;
+  }else{
+    card.innerHTML=`<div class="liga-card-header"><div class="liga-emblem"><span style="font-size:18px">${liga.emoji}</span></div><div><div class="liga-sigla">${esc(liga.sigla)}</div><h3 style="font-size:13px">${esc(liga.nome)}</h3></div></div><div class="liga-stats"><div class="liga-stat"><div class="v">${ativos}</div><div class="l">Ativos</div></div><div class="liga-stat"><div class="v">${proxEvs}</div><div class="l">Próx. eventos</div></div><div class="liga-stat"><div class="v">${membros.length}</div><div class="l">Total</div></div></div>`;
+  }
+  container.appendChild(card);
+}
+function renderHomeAgenda(evs){
+  const el=document.getElementById('home-agenda-list');if(!el)return;
+  if(!evs.length){setEmpty('home-agenda-list','fa-calendar-check','Nenhum evento próximo.');return;}
+  el.innerHTML='<div>'+evs.map(ev=>{const meta=getLiga(ev.Liga);return`<div class="tl-item"><div class="tl-dot" style="background:color-mix(in srgb,${meta.cor} 18%,transparent);color:${meta.cor};border:1px solid color-mix(in srgb,${meta.cor} 35%,transparent)">${meta.emoji}</div><div class="tl-info"><div class="tl-title">${esc(ev.Titulo||'Evento')}</div><div class="tl-meta">${fmtDate(ev.Data)} · ${esc(ev.Liga)} · ${esc(ev.Local||'—')}</div></div></div>`;}).join('')+'</div>';
+}
+function renderHomePSList(ativos){
+  const el=document.getElementById('home-ps-list');if(!el)return;
+  if(!ativos.length){setEmpty('home-ps-list','fa-users-gear','Nenhum PS em andamento.');return;}
+  el.innerHTML=ativos.slice(0,4).map(p=>{const meta=getLiga(p.Liga);return`<div class="fin-row"><div style="display:flex;align-items:center;gap:10px"><div style="font-size:18px">${meta.emoji}</div><div><div class="fin-desc">${esc(p.Liga)} — ${esc(p.Vagas||'?')} vagas</div><div class="fin-cat">Encerra: ${fmtDate(p.DataEncerramento)}</div></div></div><span class="badge b-cyan">${esc(p.Status)}</span></div>`;}).join('');
+}
+function renderHomeSec(atas){
+  const el=document.getElementById('home-sec-list');if(!el)return;
+  const pend=atas.filter(a=>a.Status==='Pendente assinatura'||a.Status==='Rascunho');
+  if(!pend.length){el.innerHTML='<div style="text-align:center;padding:18px;color:var(--green)"><i class="fas fa-check-circle" style="font-size:22px;display:block;margin-bottom:8px"></i>Sem pendências!</div>';return;}
+  el.innerHTML=pend.slice(0,5).map(a=>`<div class="fin-row"><div><div class="fin-desc">${esc(a.Titulo||'Ata '+fmtDate(a.Data))}</div><div class="fin-cat">${esc(a.Liga||'Diretiva')} · ${fmtDate(a.Data)}</div></div><span class="badge ${statusCls(a.Status)}">${esc(a.Status)}</span></div>`).join('');
+}
+function renderDonut(data){
+  const el=document.getElementById('home-donut');if(!el)return;
+  const membros=data.Membros||[];if(!membros.length){setEmpty('home-donut','fa-users','Sem dados de membros');return;}
+  const cont={};LIGAS.forEach(l=>{cont[l.sigla]=0;});membros.filter(m=>m.Status==='Ativo').forEach(m=>{if(cont[m.Liga]!==undefined)cont[m.Liga]++;});
+  const total=Object.values(cont).reduce((a,b)=>a+b,0);if(!total){setEmpty('home-donut','fa-chart-pie','Nenhum membro ativo');return;}
+  const circ=2*Math.PI*40;let offset=0;
+  const arcs=LIGAS.map(l=>{const v=cont[l.sigla]||0;if(!v)return null;const pct=v/total;const dash=circ*pct;const arc=`<circle cx="55" cy="55" r="40" fill="none" stroke="${l.cor}" stroke-width="16" stroke-dasharray="${dash.toFixed(2)} ${circ.toFixed(2)}" stroke-dashoffset="${(-offset).toFixed(2)}" transform="rotate(-90 55 55)"/>`;offset+=dash;return{arc,liga:l,v};}).filter(Boolean);
+  el.innerHTML=`<div class="donut-wrap"><svg width="110" height="110" viewBox="0 0 110 110" style="flex-shrink:0"><circle cx="55" cy="55" r="40" fill="none" stroke="var(--bg3)" stroke-width="16"/>${arcs.map(a=>a.arc).join('')}<text x="55" y="59" text-anchor="middle" fill="var(--text)" font-size="13" font-weight="700" font-family="Syne,sans-serif">${total}</text></svg><div class="donut-legend">${arcs.map(a=>`<div class="legend-item"><div class="ldot" style="background:${a.liga.cor}"></div>${esc(a.liga.sigla)} <strong style="margin-left:auto;font-family:'DM Mono',monospace">${a.v}</strong></div>`).join('')}</div></div>`;
+}
+
+// ── LIGAS DETALHE ────────────────────────────────────────────
+let _mbrTblData=[],_mbrTblPage=1,_mbrTblSortK=null,_mbrTblSortD=1;
+async function loadLigas(){
+  await fetchAll();
+  const grid=document.getElementById('ligas-grid-detail');if(grid){grid.innerHTML='';LIGAS.forEach(l=>renderLigaCard(l,_D,grid,'detail'));}
+  _mbrTblData=_D.Membros||[];renderMembrosLigasTbl();
+}
+function renderMembrosLigasTbl(){
+  const ligaF=document.getElementById('filter-liga-tbl')?.value||'';
+  let list=_mbrTblData.filter(m=>!ligaF||m.Liga===ligaF);
+  if(_mbrTblSortK)list=list.slice().sort((a,b)=>{let va=String(a[_mbrTblSortK]||''),vb=String(b[_mbrTblSortK]||'');return va<vb?-_mbrTblSortD:va>vb?_mbrTblSortD:0;});
+  renderTblPag('ligas-membros-tbody','ligas-mbr-pag','pag-info-ligas','pag-btns-ligas',list,_mbrTblPage,15,renderMbrRow,p=>{_mbrTblPage=p;renderMembrosLigasTbl();});
+}
+function sortTbl(k){_mbrTblSortK===k?_mbrTblSortD*=-1:(_mbrTblSortK=k,_mbrTblSortD=1);_mbrTblPage=1;renderMembrosLigasTbl();}
+function renderMbrRow(m){
+  const meta=getLiga(m.Liga);const ini=(m.Nome||'?')[0].toUpperCase();
+  const ab=isAdmin()?`<td style="display:flex;gap:5px"><button class="btn btn-outline btn-xs" onclick="delMembro('${esc(String(m.ID))}','${esc(m.Nome)}')"><i class="fas fa-trash" style="color:var(--red)"></i></button></td>`:'<td>—</td>';
+  return`<tr><td><div class="td-name"><div class="td-avatar" style="background:color-mix(in srgb,${meta.cor} 18%,transparent);color:${meta.cor}">${ini}</div>${esc(m.Nome)}</div></td><td><code style="font-family:'DM Mono';font-size:11px;color:var(--text3)">${esc(m.Matricula)}</code></td><td>${esc(m.Periodo)}º</td><td><span class="badge" style="background:color-mix(in srgb,${meta.cor} 18%,transparent);color:${meta.cor}">${meta.emoji} ${esc(m.Liga)}</span></td><td>${esc(m.Cargo||'Membro')}</td><td><span class="badge ${statusCls(m.Status)}">${esc(m.Status)}</span></td>${ab}</tr>`;
+}
+function renderTblPag(tbId,pagId,infoId,btnsId,list,page,perPage,rowFn,onPage){
+  const tbody=document.getElementById(tbId),pag=document.getElementById(pagId);if(!tbody)return;
+  const total=list.length,pages=Math.ceil(total/perPage),pg=Math.min(page,Math.max(1,pages));
+  const ini=(pg-1)*perPage,slice=list.slice(ini,ini+perPage);
+  if(!slice.length){tbody.innerHTML='<tr><td colspan="20" style="text-align:center;padding:28px;color:var(--text3)"><i class="fas fa-search" style="font-size:22px;display:block;margin-bottom:10px;opacity:.3"></i>Nenhum resultado.</td></tr>';if(pag)pag.style.display='none';return;}
+  tbody.innerHTML=slice.map(rowFn).join('');
+  if(pag){
+    if(pages<=1){pag.style.display='none';return;}pag.style.display='flex';
+    const info=document.getElementById(infoId),btns=document.getElementById(btnsId);
+    if(info)info.textContent=`${ini+1}–${Math.min(ini+perPage,total)} de ${total}`;
+    if(btns){let h=`<button class="pag-btn" ${pg===1?'disabled':''} onclick="(${onPage.toString()})(${pg-1})"><i class="fas fa-chevron-left"></i></button>`;for(let p=1;p<=pages;p++){if(pages<=7||Math.abs(p-pg)<=1||p===1||p===pages)h+=`<button class="pag-btn${p===pg?' active':''}" onclick="(${onPage.toString()})(${p})">${p}</button>`;else if(Math.abs(p-pg)===2)h+='<button class="pag-btn" disabled>…</button>';}h+=`<button class="pag-btn" ${pg===pages?'disabled':''} onclick="(${onPage.toString()})(${pg+1})"><i class="fas fa-chevron-right"></i></button>`;btns.innerHTML=h;}
+  }
+}
+function filtrarLigaMbr(s){goPage('membros');setTimeout(()=>{const el=document.getElementById('mbr-liga');if(el){el.value=s;_renderMbr();}},100);}
+function filtrarLigaAgenda(s){goPage('agenda');setTimeout(()=>{const el=document.getElementById('ag-filter-liga');if(el){el.value=s;loadAgenda();}},100);}
+
+// ── MEMBROS ──────────────────────────────────────────────────
+let _mbrPg=1,_mbrSortK=null,_mbrSortD=1;
+async function loadMembros(){const d=await apiGet({action:'getAll',sheet:'Membros'});_D.Membros=d||[];_renderMbr();}
+function sortMbr(k){_mbrSortK===k?_mbrSortD*=-1:(_mbrSortK=k,_mbrSortD=1);_mbrPg=1;_renderMbr();}
+function _renderMbr(){
+  const liga=document.getElementById('mbr-liga')?.value||'';
+  const status=document.getElementById('mbr-status')?.value||'';
+  const q=(document.getElementById('mbr-srch')?.value||'').toLowerCase();
+  let list=(_D.Membros||[]).filter(m=>{const txt=Object.values(m).join(' ').toLowerCase();return(!liga||m.Liga===liga)&&(!status||m.Status===status)&&(!q||txt.includes(q));});
+  if(_mbrSortK)list=list.slice().sort((a,b)=>{let va=String(a[_mbrSortK]||''),vb=String(b[_mbrSortK]||'');return va<vb?-_mbrSortD:va>vb?_mbrSortD:0;});
+  renderTblPag('mbr-tbody','mbr-pag','pag-info-mbr','pag-btns-mbr',list,_mbrPg,15,m=>{
+    const meta=getLiga(m.Liga);const ini=(m.Nome||'?')[0].toUpperCase();
+    const ab=isAdmin()?`<td style="display:flex;gap:5px"><button class="btn btn-outline btn-xs" onclick="delMembro('${esc(String(m.ID))}','${esc(m.Nome)}')"><i class="fas fa-trash" style="color:var(--red)"></i></button></td>`:'<td>—</td>';
+    return`<tr><td><div class="td-name"><div class="td-avatar" style="background:color-mix(in srgb,${meta.cor} 18%,transparent);color:${meta.cor}">${ini}</div>${esc(m.Nome)}</div></td><td><code style="font-family:'DM Mono';font-size:11px;color:var(--text3)">${esc(m.Matricula)}</code></td><td>${esc(m.Periodo)}º</td><td><span class="badge" style="background:color-mix(in srgb,${meta.cor} 18%,transparent);color:${meta.cor}">${meta.emoji} ${esc(m.Liga)}</span></td><td>${esc(m.Cargo||'Membro')}</td><td>${fmtDate(m.DataIngresso)}</td><td><span class="badge ${statusCls(m.Status)}">${esc(m.Status)}</span></td>${ab}</tr>`;
+  },p=>{_mbrPg=p;_renderMbr();});
+}
+
+// ── AGENDA ───────────────────────────────────────────────────
+let _calY=new Date().getFullYear(),_calM=new Date().getMonth(),_calEvs=[];
+async function loadAgenda(){
+  const d=await apiGet({action:'getAll',sheet:'Eventos'});_D.Eventos=d||[];
+  const ligaF=document.getElementById('ag-filter-liga')?.value||'';
+  _calEvs=(_D.Eventos).filter(e=>!ligaF||e.Liga===ligaF).sort((a,b)=>new Date(a.Data)-new Date(b.Data));
+  renderAgendaLista(_calEvs);renderCal(_calY,_calM,_calEvs);
+}
+function renderAgendaLista(evs){
+  const el=document.getElementById('agenda-list-container');if(!el)return;
+  if(!evs.length){setEmpty('agenda-list-container','fa-calendar-check','Nenhum evento cadastrado.');return;}
+  const hoje=new Date();hoje.setHours(0,0,0,0);
+  el.innerHTML=evs.map(ev=>{
+    const d=new Date((ev.Data||'')+'T00:00:00'),meta=getLiga(ev.Liga),past=d<hoje;
+    const db=isAdmin()?`<button class="btn btn-outline btn-xs admin-only" onclick="delEvento('${esc(String(ev.ID))}','${esc(ev.Titulo)}')"><i class="fas fa-trash" style="color:var(--red)"></i></button>`:'';
+    return`<div class="card" style="margin-bottom:10px;${past?'opacity:.55':''}"><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><div style="background:color-mix(in srgb,${meta.cor} 15%,transparent);border:1px solid color-mix(in srgb,${meta.cor} 30%,transparent);border-radius:12px;padding:10px 18px;text-align:center;flex-shrink:0"><div style="font-size:10px;color:${meta.cor};text-transform:uppercase;letter-spacing:1px">${d.toLocaleString('pt-BR',{month:'short'}).replace('.','').toUpperCase()}</div><div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:${meta.cor}">${d.getDate()}</div></div><div style="flex:1;min-width:140px"><div style="font-size:15px;font-weight:700;margin-bottom:4px">${esc(ev.Titulo)}</div><div style="font-size:12px;color:var(--text2)"><i class="fas fa-clock"></i> ${esc(ev.Hora||'—')} &nbsp;·&nbsp; <i class="fas fa-location-dot"></i> ${esc(ev.Local||'—')}</div></div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="badge" style="background:color-mix(in srgb,${meta.cor} 18%,transparent);color:${meta.cor}">${meta.emoji} ${esc(ev.Liga)}</span>${ev.Tipo?`<span class="badge b-gray">${esc(ev.Tipo)}</span>`:''} ${ev.Status?`<span class="badge ${statusCls(ev.Status)}">${esc(ev.Status)}</span>`:''} ${db}</div></div></div>`;
+  }).join('');
+}
+function renderCal(year,month,evs){
+  _calY=year;_calM=month;_calEvs=evs||_calEvs;
+  const container=document.getElementById('cal-container');if(!container)return;
+  const hoje=new Date(),prim=new Date(year,month,1),ult=new Date(year,month+1,0);
+  const meses=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  const evsPD={};(_calEvs||[]).forEach(e=>{if(e.Data){const k=e.Data.substring(0,10);if(!evsPD[k])evsPD[k]=[];evsPD[k].push(e);}});
+  let h=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px"><button class="btn btn-outline btn-sm" onclick="renderCal(${month===0?year-1:year},${month===0?11:month-1})"><i class="fas fa-chevron-left"></i></button><div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700">${meses[month]} ${year}</div><button class="btn btn-outline btn-sm" onclick="renderCal(${month===11?year+1:year},${month===11?0:month+1})"><i class="fas fa-chevron-right"></i></button></div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;margin-bottom:6px">${['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(d=>`<div style="font-size:10px;font-weight:700;color:var(--text3);padding:4px">${d}</div>`).join('')}</div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px">`;
+  for(let i=0;i<prim.getDay();i++)h+='<div style="min-height:48px"></div>';
+  for(let dia=1;dia<=ult.getDate();dia++){
+    const ds=`${year}-${String(month+1).padStart(2,'0')}-${String(dia).padStart(2,'0')}`;
+    const d=evsPD[ds]||[],iH=dia===hoje.getDate()&&month===hoje.getMonth()&&year===hoje.getFullYear();
+    const bg=iH?'background:var(--blue);':d.length?'background:rgba(0,207,255,.08);':'';
+    const col=iH?'color:#fff;':d.length?'color:var(--cyan);':'';
+    const dots=d.length?'<div style="display:flex;justify-content:center;gap:2px;margin-top:2px">'+d.slice(0,3).map(ev=>{const m=getLiga(ev.Liga);return`<div style="width:5px;height:5px;border-radius:50%;background:${m.cor}"></div>`;}).join('')+'</div>':'';
+    h+=`<div style="min-height:48px;padding:5px 2px;text-align:center;border-radius:8px;${bg}${col}font-size:13px;${iH?'font-weight:700':''}${d.length?';cursor:pointer':''}" title="${d.map(e=>e.Titulo).join(', ')}" onclick="${d.length?`mostrarDia('${ds}')`:''}">${dia}${dots}</div>`;
+  }
+  h+='</div>';
+  if(_calEvs.length){
+    const hd=new Date(hoje);hd.setHours(0,0,0,0);
+    const prox=_calEvs.filter(e=>new Date((e.Data||'')+'T00:00:00')>=hd).slice(0,4);
+    if(prox.length){h+='<div style="margin-top:18px;border-top:1px solid var(--border);padding-top:14px"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:10px">Próximos</div>';prox.forEach(ev=>{const meta=getLiga(ev.Liga);h+=`<div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)"><div style="font-size:16px">${meta.emoji}</div><div style="flex:1"><div style="font-size:12px;font-weight:600">${esc(ev.Titulo)}</div><div style="font-size:10px;color:var(--text3)">${fmtDate(ev.Data)} · ${esc(ev.Liga)}</div></div></div>`;});h+='</div>';}
+  }
+  container.innerHTML=h;
+}
+function mostrarDia(ds){const evs=(_calEvs||[]).filter(e=>(e.Data||'').substring(0,10)===ds);if(evs.length)showToast(evs.map(e=>`${e.Liga||'?'}: ${e.Titulo}`).join(' | '),'info');}
+
+// ── SECRETARIA ───────────────────────────────────────────────
+async function loadSecretaria(){loadAtas();loadCorr();loadOficios();loadDiretiva();}
+async function loadAtas(){
+  const d=await apiGet({action:'getAll',sheet:'Atas'});_D.Atas=d||[];
+  const ligaF=document.getElementById('atas-filter-liga')?.value||'';
+  const list=(_D.Atas).filter(a=>!ligaF||a.Liga===ligaF).sort((a,b)=>new Date(b.Data)-new Date(a.Data));
+  const el=document.getElementById('atas-container');if(!el)return;
+  if(!list.length){setEmpty('atas-container','fa-file-alt','Nenhuma ata registrada.');return;}
+  el.innerHTML=list.map(a=>{
+    const meta=getLiga(a.Liga);
+    const db=isAdmin()?`<button class="btn btn-outline btn-xs admin-only" onclick="event.stopPropagation();delAta('${esc(String(a.ID))}','${esc(a.Titulo||'')}')"><i class="fas fa-trash" style="color:var(--red)"></i></button>`:'';
+    return`<div class="card" style="margin-bottom:10px"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px"><div><div style="font-size:14px;font-weight:600;margin-bottom:4px">${esc(a.Titulo||('Ata '+fmtDate(a.Data)))}</div><div style="font-size:12px;color:var(--text2)"><span class="badge" style="margin-right:8px;background:color-mix(in srgb,${meta.cor} 18%,transparent);color:${meta.cor}">${meta.emoji} ${esc(a.Liga||'Diretiva')}</span><i class="fas fa-calendar"></i> ${fmtDate(a.Data)} &nbsp;·&nbsp; <i class="fas fa-users"></i> ${esc(a.Presentes||'?')} pres. &nbsp;·&nbsp; <i class="fas fa-clock"></i> ${esc(a.Duracao||'—')}</div></div><div style="display:flex;align-items:center;gap:8px"><span class="badge ${statusCls(a.Status)}">${esc(a.Status||'Rascunho')}</span>${db}</div></div></div>`;
+  }).join('');
+}
+async function loadCorr(){
+  const d=await apiGet({action:'getAll',sheet:'Correspondencias'});_D.Correspondencias=d||[];
+  const rec=(d||[]).filter(c=>c.Direcao==='Recebida'),env=(d||[]).filter(c=>c.Direcao==='Enviada');
+  const mk=list=>list.length?list.slice(0,5).map(c=>`<div class="fin-row"><div><div class="fin-desc">${esc(c.Assunto||'—')}</div><div class="fin-cat">${esc(c.Direcao==='Recebida'?'De: '+(c.Dest||c.Remetente||'?'):'Para: '+(c.Dest||'?'))} · ${fmtDate(c.Data)}</div></div><span class="badge ${statusCls(c.Status)}">${esc(c.Status||'—')}</span></div>`).join(''):'<div style="padding:14px;color:var(--text3);font-size:13px;text-align:center">Nenhuma.</div>';
+  setEl('corr-rec-list',mk(rec));setEl('corr-env-list',mk(env));
+}
+async function loadOficios(){
+  const d=await apiGet({action:'getAll',sheet:'Oficios'});_D.Oficios=d||[];
+  const tbody=document.getElementById('oficios-tbody');if(!tbody)return;
+  if(!d?.length){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;padding:22px;color:var(--text3)">Nenhum ofício registrado.</td></tr>';return;}
+  tbody.innerHTML=d.sort((a,b)=>new Date(b.Data)-new Date(a.Data)).map(o=>{
+    const lnk=o.DriveLink?`<a href="${esc(o.DriveLink)}" target="_blank" class="btn btn-outline btn-xs"><i class="fas fa-external-link-alt"></i></a>`:isAdmin()?`<button class="btn btn-outline btn-xs" onclick="delOficio('${esc(String(o.ID))}')"><i class="fas fa-trash" style="color:var(--red)"></i></button>`:'—';
+    return`<tr><td><code style="font-family:'DM Mono';font-size:11px">${esc(o.Numero||'—')}</code></td><td>${esc(o.Assunto||'—')}</td><td>${esc(o.Dest||'—')}</td><td>${fmtDate(o.Data)}</td><td><span class="badge ${statusCls(o.Status)}">${esc(o.Status||'—')}</span></td><td>${lnk}</td></tr>`;
+  }).join('');
+}
+async function loadDiretiva(){
+  const cfgs=await apiGet({action:'getAll',sheet:'Configuracoes'});
+  const map={};(cfgs||[]).forEach(c=>{if(c.chave)map[c.chave]=c.valor;});
+  const cargos=['Presidente','Vice-Presidente','Secretário(a)','Tesoureiro(a)','Diretor de Pesquisa','Diretor de Extensão'];
+  const el=document.getElementById('diretiva-composicao');
+  if(el)el.innerHTML=cargos.map(c=>`<div class="fin-row"><div><div class="fin-desc">${esc(c)}</div></div><div style="font-size:13px;font-weight:600;color:var(--cyan)">${esc(map['diretiva_'+c.toLowerCase().replace(/[^a-z]/g,'_')]||'—')}</div></div>`).join('');
+  const form=document.getElementById('form-diretiva');
+  if(form)form.innerHTML=cargos.map(c=>`<div class="form-group"><label class="form-label">${esc(c)}</label><input class="form-input" data-key="diretiva_${c.toLowerCase().replace(/[^a-z]/g,'_')}" type="text" placeholder="Nome do membro" value="${esc(map['diretiva_'+c.toLowerCase().replace(/[^a-z]/g,'_')]||'')}"></div>`).join('');
+  const mi=document.getElementById('mandato-info');
+  if(mi)mi.innerHTML=`<div class="fin-row"><div class="fin-desc">Início do mandato</div><strong>${esc(map['mandato_inicio']||'—')}</strong></div><div class="fin-row"><div class="fin-desc">Fim do mandato</div><strong>${esc(map['mandato_fim']||'—')}</strong></div><div class="fin-row"><div class="fin-desc">Ano letivo</div><strong>${esc(map['ano_letivo']||'2026')}</strong></div>`;
+}
+
+// ── REGULAMENTOS ─────────────────────────────────────────────
+async function loadRegulamentos(){
+  const d=await apiGet({action:'getAll',sheet:'Documentos'});_D.Documentos=d||[];
+  const normas=(d||[]).filter(x=>x.Categoria==='Regulamento'||x.Categoria==='Norma');
+  const el=document.getElementById('normas-list');
+  if(el){if(!normas.length){setEmpty('normas-list','fa-file-alt','Nenhuma norma cadastrada.');}else{el.innerHTML=normas.map(x=>`<div class="fin-row" style="cursor:pointer" onclick="abrirDoc('${esc(x.fileName||x.Nome||'')}','${esc(x.url||'')}')"><div style="display:flex;align-items:center;gap:12px"><i class="fas fa-file-alt" style="color:var(--blue);font-size:20px"></i><div><div class="fin-desc">${esc(x.fileName||x.Nome||'—')}</div><div class="fin-cat">${esc(x.Liga||'Diretiva')} · ${fmtDate(x.dataUpload||x.Data)}</div></div></div>${x.url?'<i class="fas fa-external-link-alt" style="color:var(--text3)"></i>':''}</div>`).join('');}}
+  const rl=document.getElementById('reg-ligas-grid');
+  if(rl)rl.innerHTML=`<div class="grid g3">${LIGAS.map(l=>{const reg=(d||[]).find(x=>x.Liga===l.sigla&&(x.Categoria==='Regulamento'||x.Categoria==='Estatuto'));return`<div class="card" style="text-align:center;cursor:pointer;border-left:3px solid ${l.cor}" onclick="${reg?.url?`window.open('${esc(reg.url)}','_blank')`:`showToast('Nenhum regulamento vinculado para ${l.sigla} ainda.','info')`}"><div style="font-size:28px;margin-bottom:10px;margin-top:6px">${l.emoji}</div><div style="font-weight:700;margin-bottom:4px">${esc(l.sigla)}</div><div style="font-size:11px;color:var(--text3);margin-bottom:8px">${esc(l.nome)}</div>${reg?'<span class="badge b-green">Vinculado</span>':'<span class="badge b-gray">Pendente</span>'}</div>`;}).join('')}</div>`;
+}
+
+// ── PROCESSOS SELETIVOS ──────────────────────────────────────
+async function loadProcessos(){
+  const d=await apiGet({action:'getAll',sheet:'PS'});_D.PS=d||[];
+  renderPSList('ps-ativos-list',(d||[]).filter(p=>p.Status==='Aberto'));
+  renderPSList('ps-enc-list',(d||[]).filter(p=>p.Status!=='Aberto'));
+  loadCandidatos();
+  const cnt=(d||[]).filter(p=>p.Status==='Aberto').length;
+  document.getElementById('nb-ps').textContent=cnt;document.getElementById('nb-ps').style.display=cnt?'':'none';
+}
+function renderPSList(elId,list){
+  const el=document.getElementById(elId);if(!el)return;
+  if(!list.length){setEmpty(elId,'fa-users-gear','Nenhum processo seletivo.');return;}
+  el.innerHTML=list.map(p=>{
+    const meta=getLiga(p.Liga);
+    const db=isAdmin()?`<div style="display:flex;gap:6px;margin-top:12px"><button class="btn btn-outline btn-sm admin-only" onclick="delPS('${esc(String(p.ID))}')"><i class="fas fa-trash" style="color:var(--red)"></i> Excluir</button></div>`:'';
+    return`<div class="card" style="margin-bottom:12px;border-left:3px solid ${meta.cor}"><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><div style="font-size:32px">${meta.emoji}</div><div style="flex:1"><div style="font-size:15px;font-weight:700;margin-bottom:6px">${esc(meta.sigla)} — ${esc(p.Vagas||'?')} vagas</div><div style="display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--text2)"><span><i class="fas fa-calendar-plus"></i> Abertura: ${fmtDate(p.DataAbertura)}</span><span><i class="fas fa-calendar-xmark"></i> Encerramento: ${fmtDate(p.DataEncerramento)}</span>${p.DataResultado?`<span><i class="fas fa-trophy"></i> Resultado: ${fmtDate(p.DataResultado)}</span>`:''}</div>${p.Criterios?`<div style="font-size:12px;color:var(--text3);margin-top:6px">${esc(p.Criterios)}</div>`:''}</div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px"><span class="badge ${statusCls(p.Status)}">${esc(p.Status)}</span>${p.EditalLink?`<a href="${esc(p.EditalLink)}" target="_blank" class="btn btn-outline btn-xs"><i class="fas fa-file-pdf"></i> Edital</a>`:''}</div></div>${db}</div>`;
+  }).join('');
+}
+async function loadCandidatos(){
+  const d=await apiGet({action:'getAll',sheet:'Candidatos'});_D.Candidatos=d||[];
+  const tbody=document.getElementById('cand-tbody');if(!tbody)return;
+  if(!d?.length){tbody.innerHTML='<tr><td colspan="7" style="text-align:center;padding:22px;color:var(--text3)">Nenhum candidato cadastrado.</td></tr>';return;}
+  tbody.innerHTML=d.map(c=>{const meta=getLiga(c.Liga);return`<tr><td>${esc(c.Nome||'—')}</td><td><span class="badge" style="background:color-mix(in srgb,${meta.cor} 18%,transparent);color:${meta.cor}">${meta.emoji} ${esc(c.Liga)}</span></td><td>${esc(c.PS||'—')}</td><td><code style="font-family:'DM Mono'">${esc(c.NotaCurriculo||'—')}</code></td><td><code style="font-family:'DM Mono'">${esc(c.NotaEntrevista||'—')}</code></td><td><span class="badge ${statusCls(c.Status)}">${esc(c.Status||'—')}</span></td><td>—</td></tr>`;}).join('');
+}
+function exportarCandidatos(){
+  const d=_D.Candidatos||[];if(!d.length){showToast('Nenhum candidato para exportar.','warning');return;}
+  const h=Object.keys(d[0]);const csv=[h.join(';'),...d.map(r=>h.map(k=>`"${String(r[k]??'').replace(/"/g,'""')}"`).join(';'))].join('\r\n');
+  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=`candidatos_${new Date().toISOString().split('T')[0]}.csv`;a.click();URL.revokeObjectURL(url);
+  showToast('Candidatos exportados!','success');
+}
+
+// ── ELEIÇÕES ─────────────────────────────────────────────────
+async function loadEleicoes(){
+  const[elD,candD]=await Promise.all([apiGet({action:'getAll',sheet:'Eleicoes'}),apiGet({action:'getAll',sheet:'Candidaturas'})]);
+  _D.Eleicoes=elD||[];_D.Candidaturas=candD||[];
+  const hoje=new Date();hoje.setHours(0,0,0,0);
+  const ativas=(_D.Eleicoes).filter(e=>new Date((e.DataEleicao||'')+'T00:00:00')>=hoje);
+  const histor=(_D.Eleicoes).filter(e=>new Date((e.DataEleicao||'')+'T00:00:00')<hoje);
+  const eaEl=document.getElementById('eleicoes-ativas');
+  if(eaEl){if(!ativas.length){setEmpty('eleicoes-ativas','fa-ballot-check','Nenhuma eleição programada.');}else{eaEl.innerHTML=ativas.map(el=>{const meta=getLiga(el.Orgao||el.Liga);return`<div class="card" style="margin-bottom:10px;border-left:3px solid ${meta.cor}"><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><div style="font-size:26px">${meta.emoji}</div><div style="flex:1"><div style="font-weight:700;margin-bottom:4px">${esc(el.Cargo||'Eleição')}</div><div style="font-size:12px;color:var(--text2)">${esc(el.Orgao||el.Liga)} · Eleição: ${fmtDate(el.DataEleicao)}${el.PrazoInscricao?' · Inscrições até: '+fmtDate(el.PrazoInscricao):''}</div></div><span class="badge b-cyan">Ativa</span></div></div>`;}).join('');}}
+  const histEl=document.getElementById('eleicoes-historico');
+  if(histEl){if(!histor.length){histEl.innerHTML='<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--text3)">Sem histórico.</td></tr>';}else{histEl.innerHTML=histor.map(e=>`<tr><td>${esc(e.Cargo||'—')}</td><td>${esc(e.Orgao||e.Liga||'—')}</td><td>${fmtDate(e.DataEleicao)}</td><td>${esc(e.Vencedor||'—')}</td><td>${e.Votos?`<code style="font-family:'DM Mono'">${esc(e.Votos)}</code>`:'—'}</td><td><span class="badge b-gray">Encerrada</span></td></tr>`).join('');}}
+  const clEl=document.getElementById('candidaturas-list');
+  if(clEl){if(!candD?.length){setEmpty('candidaturas-list','fa-person-circle-check','Nenhuma candidatura.');}else{clEl.innerHTML=candD.slice(0,6).map(c=>`<div class="fin-row"><div><div class="fin-desc">${esc(c.Nome||'—')}</div><div class="fin-cat">${esc(c.Chapa||c.Eleicao||'—')} · ${esc(c.Cargo||'—')}</div></div><span class="badge ${statusCls(c.Status||'Em análise')}">${esc(c.Status||'Em análise')}</span></div>`).join('');}}
+}
+
+// ── FINANCEIRO ───────────────────────────────────────────────
+async function loadFinanceiro(){
+  const d=await apiGet({action:'getAll',sheet:'Financeiro'});_D.Financeiro=d||[];
+  if(!d?.length){setText('fin-saldo','—');setText('fin-rec','—');setText('fin-desp','—');setEmpty('fin-movs','fa-receipt','Nenhum lançamento.');return;}
+  let saldo=0,recMes=0,despMes=0;const hoje=new Date();const catT={};
+  d.forEach(m=>{const v=parseFloat(m.Valor)||0,isR=String(m.Tipo).toLowerCase()==='receita';saldo+=isR?v:-v;const dt=new Date((m.Data||'')+'T00:00:00');if(!isNaN(dt)&&dt.getMonth()===hoje.getMonth()&&dt.getFullYear()===hoje.getFullYear()){if(isR)recMes+=v;else{despMes+=v;catT[m.Categoria]=(catT[m.Categoria]||0)+v;}}});
+  setText('fin-saldo',fmtGs(saldo));setText('fin-rec',fmtGs(recMes));setText('fin-desp',fmtGs(despMes));
+  setEl('fin-saldo-sub',saldo>=0?'<i class="fas fa-circle-check" style="color:var(--green)"></i> Saldo positivo':'<i class="fas fa-triangle-exclamation" style="color:var(--red)"></i> Saldo negativo');
+  const movEl=document.getElementById('fin-movs');
+  if(movEl)movEl.innerHTML=d.sort((a,b)=>new Date(b.Data)-new Date(a.Data)).slice(0,10).map(m=>{const v=parseFloat(m.Valor)||0,isR=String(m.Tipo).toLowerCase()==='receita';const db=isAdmin()?`<button class="btn btn-outline btn-xs" style="color:var(--red);margin-left:8px;flex-shrink:0" onclick="delLanc('${esc(String(m.ID))}','${esc(m.Descricao)}')"><i class="fas fa-trash"></i></button>`:'';return`<div class="fin-row"><div style="flex:1"><div class="fin-desc">${esc(m.Descricao||'—')}</div><div class="fin-cat">${esc(m.Tipo)} · ${esc(m.Categoria||'—')} · ${fmtDate(m.Data)}</div></div><div class="fin-val ${isR?'pos':'neg'}" style="flex-shrink:0">${isR?'+':'−'}${fmtGs(v,false)}</div>${db}</div>`;}).join('');
+  const totalD=Object.values(catT).reduce((a,b)=>a+b,0);const distEl=document.getElementById('fin-dist');
+  if(distEl&&totalD>0){const sorted=Object.entries(catT).sort((a,b)=>b[1]-a[1]).slice(0,5);const cors=['var(--blue)','var(--orange)','var(--green)','var(--yellow)','var(--purple)'];distEl.innerHTML=sorted.map(([cat,v],i)=>{const pct=Math.round(v/totalD*100);return`<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>${esc(cat)}</span><strong>${pct}%</strong></div><div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${cors[i]}"></div></div></div>`;}).join('');}
+  else if(distEl)setEmpty('fin-dist','fa-chart-pie','Sem despesas este mês.');
+  const cfgs=_D.Configuracoes||[];const prazo=cfgs.find(c=>c.chave==='prazo_prestacao_contas')?.valor;setText('fin-prazo',prazo?fmtDate(prazo):'—');
+}
+
+// ── DOCUMENTOS ───────────────────────────────────────────────
+async function loadDocumentos(){const d=await apiGet({action:'getAll',sheet:'Documentos'});_D.Documentos=d||[];filtrarDocs();}
+function filtrarDocs(){
+  const q=(document.getElementById('doc-srch')?.value||'').toLowerCase();
+  const cat=(document.getElementById('doc-cat')?.value||'').toLowerCase();
+  const liga=document.getElementById('doc-liga-filter')?.value||'';
+  const catColor={Ata:'b-blue',Ofício:'b-orange',Regulamento:'b-yellow',Financeiro:'b-green','Processo Seletivo':'b-cyan',Eleição:'b-purple',Comunicado:'b-orange',Geral:'b-gray'};
+  const grid=document.getElementById('docs-grid');if(!grid)return;
+  const docs=(_D.Documentos||[]).filter(d=>{const txt=Object.values(d).join(' ').toLowerCase();return(!q||txt.includes(q))&&(!cat||(d.Categoria||'').toLowerCase()===cat)&&(!liga||d.Liga===liga);});
+  if(!docs.length){grid.innerHTML='<div style="text-align:center;padding:32px;color:var(--text3);grid-column:1/-1"><i class="fas fa-folder-open" style="font-size:28px;display:block;margin-bottom:12px;opacity:.3"></i>Nenhum documento encontrado.</div>';return;}
+  grid.innerHTML=docs.map(d=>{
+    const meta=getLiga(d.Liga||'Diretiva');const bc=catColor[d.Categoria]||'b-gray';
+    const del=isAdmin()?`<button class="btn btn-outline btn-xs admin-only" style="position:absolute;top:8px;left:8px;background:var(--bg3);border:1px solid var(--border2);width:26px;height:26px;padding:0;display:flex;align-items:center;justify-content:center" onclick="event.stopPropagation();delDoc('${esc(String(d.id||d.ID||''))}','${esc(d.fileName||d.Nome||'')}')"><i class="fas fa-trash" style="color:var(--red);font-size:10px"></i></button>`:'';
+    return`<div class="card" style="text-align:center;cursor:pointer;transition:all .2s;position:relative" onclick="abrirDoc('${esc(d.fileName||d.Nome||'')}','${esc(d.url||'')}')" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''"><span class="badge ${bc}" style="position:absolute;top:8px;right:8px;font-size:9px">${esc(d.Categoria||'Geral')}</span>${del}<i class="fas fa-file-pdf" style="font-size:34px;color:var(--blue);margin-bottom:10px;margin-top:${isAdmin()?'18':'8'}px"></i><div style="font-size:12.5px;font-weight:600;margin-bottom:4px">${esc(d.fileName||d.Nome||'—')}</div><div style="font-size:10px;color:var(--text3)">${meta.emoji} ${esc(d.Liga||'Diretiva')} · ${fmtDate(d.dataUpload||d.Data)}</div>${d.url?'<div style="font-size:10px;color:var(--green);margin-top:5px"><i class="fas fa-link"></i> Drive</div>':''}</div>`;
+  }).join('');
+}
+function abrirDoc(nome,url){if(url&&url.startsWith('http'))window.open(url,'_blank','noopener');else showToast(`"${nome}" — sem link do Drive vinculado ainda.`,'info');}
+
+// ── COMUNICADOS ──────────────────────────────────────────────
+async function loadComunicados(){
+  const d=await apiGet({action:'getAll',sheet:'Comunicados'});_D.Comunicados=d||[];
+  const el=document.getElementById('com-list');if(!el)return;
+  if(!d?.length){setEmpty('com-list','fa-bullhorn','Nenhum comunicado registrado.');return;}
+  const urgC={Urgente:'var(--red)',Normal:'var(--text2)',Informativo:'var(--cyan)'};
+  el.innerHTML=d.sort((a,b)=>new Date(b.Data)-new Date(a.Data)).slice(0,8).map(c=>`<div style="padding:12px 0;border-bottom:1px solid var(--border)"><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><i class="fas fa-circle-dot" style="font-size:8px;color:${urgC[c.Urgencia]||'var(--text3)'}"></i><div style="font-weight:600;font-size:13.5px;flex:1">${esc(c.Assunto||'—')}</div><span style="font-size:10px;color:var(--text3)">${fmtDate(c.Data)}</span></div><div style="font-size:12px;color:var(--text2);margin-left:16px">${esc(c.Destinatarios||'—')} · <em>${esc((c.Mensagem||'').substring(0,80))}${(c.Mensagem||'').length>80?'…':''}</em></div></div>`).join('');
+}
+
+// ── RELATÓRIOS ───────────────────────────────────────────────
+async function loadRelatorios(){
+  await fetchAll();const membros=_D.Membros||[],eventos=_D.Eventos||[];
+  const mEl=document.getElementById('rel-membros');
+  if(mEl){const maxV=Math.max(...LIGAS.map(l=>membros.filter(m=>m.Liga===l.sigla&&m.Status==='Ativo').length),1);mEl.innerHTML=`<div style="display:flex;align-items:flex-end;gap:8px;height:140px;padding-bottom:22px">${LIGAS.map(l=>{const v=membros.filter(m=>m.Liga===l.sigla&&m.Status==='Ativo').length;const h=Math.max(6,Math.round(v/maxV*90));return`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="font-size:11px;font-weight:700;color:var(--text2)">${v}</div><div style="width:100%;height:${h}%;border-radius:6px 6px 0 0;background:${l.cor};min-height:8px"></div><div style="font-size:9px;font-weight:700;color:var(--text3)">${esc(l.sigla)}</div></div>`;}).join('')}</div>`;}
+  const eEl=document.getElementById('rel-eventos');
+  if(eEl){const ano=new Date().getFullYear();const maxE=Math.max(...LIGAS.map(l=>eventos.filter(e=>e.Liga===l.sigla&&String(e.Data||'').startsWith(String(ano))).length),1);eEl.innerHTML=`<div style="display:flex;align-items:flex-end;gap:8px;height:140px;padding-bottom:22px">${LIGAS.map(l=>{const v=eventos.filter(e=>e.Liga===l.sigla&&String(e.Data||'').startsWith(String(ano))).length;const h=Math.max(6,Math.round(v/maxE*90));return`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="font-size:11px;font-weight:700;color:var(--text2)">${v}</div><div style="width:100%;height:${h}%;border-radius:6px 6px 0 0;background:${l.cor};min-height:8px"></div><div style="font-size:9px;font-weight:700;color:var(--text3)">${esc(l.sigla)}</div></div>`;}).join('')}</div>`;}
+}
+function exportarRelatorio(tipo){
+  if(!reqAdmin('exportar relatórios'))return;
+  const map={membros:'Membros',eventos:'Eventos',financeiro:'Financeiro',ps:'PS',geral:'Membros'};
+  const sheet=map[tipo];const d=_D[sheet]||[];
+  if(!d.length){showToast('Nenhum dado disponível.','warning');return;}
+  const h=Object.keys(d[0]);const csv=[h.join(';'),...d.map(r=>h.map(k=>`"${String(r[k]??'').replace(/"/g,'""')}"`).join(';'))].join('\r\n');
+  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=`diretiva_${sheet}_${new Date().toISOString().split('T')[0]}.csv`;a.click();URL.revokeObjectURL(url);
+  showToast(`Relatório "${sheet}" exportado!`,'success');
+}
+
+// ── NOTIFICAÇÕES ─────────────────────────────────────────────
+async function carregarNotif(){
+  const el=document.getElementById('notif-list');if(!el)return;
+  await fetchAll();const notifs=[];
+  const mbrAtivos=(_D.Membros||[]).filter(m=>m.Status==='Ativo').length;
+  if(mbrAtivos)notifs.push({icon:'fa-users',cor:'var(--blue)',msg:`${mbrAtivos} membros ativos em todas as ligas.`,dt:'Agora'});
+  const psAbertos=(_D.PS||[]).filter(p=>p.Status==='Aberto');
+  if(psAbertos.length)notifs.push({icon:'fa-users-gear',cor:'var(--orange)',msg:`${psAbertos.length} processo(s) seletivo(s) aberto(s).`,dt:'Verificar'});
+  const atasPend=(_D.Atas||[]).filter(a=>a.Status==='Pendente assinatura').length;
+  if(atasPend)notifs.push({icon:'fa-file-circle-exclamation',cor:'var(--yellow)',msg:`${atasPend} ata(s) pendente(s) de assinatura.`,dt:'Urgente'});
+  const hoje=new Date();hoje.setHours(0,0,0,0);
+  const proxEv=(_D.Eventos||[]).filter(e=>new Date((e.Data||'')+'T00:00:00')>=hoje).sort((a,b)=>new Date(a.Data)-new Date(b.Data))[0];
+  if(proxEv)notifs.push({icon:'fa-calendar-check',cor:'var(--green)',msg:`Próx. evento: ${proxEv.Titulo} (${proxEv.Liga}) em ${fmtDate(proxEv.Data)}.`,dt:'Agenda'});
+  const ativas=(_D.Eleicoes||[]).filter(e=>new Date((e.DataEleicao||'')+'T00:00:00')>=hoje);
+  if(ativas.length)notifs.push({icon:'fa-ballot-check',cor:'var(--purple)',msg:`${ativas.length} eleição(ões) programada(s).`,dt:'Eleições'});
+  if(!notifs.length)notifs.push({icon:'fa-check-circle',cor:'var(--green)',msg:'Nenhuma pendência. Tudo em ordem!',dt:'Agora'});
+  el.innerHTML=notifs.map(n=>`<div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><div style="width:32px;height:32px;border-radius:50%;background:color-mix(in srgb,${n.cor} 18%,transparent);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fas ${n.icon}" style="color:${n.cor};font-size:13px"></i></div><div style="flex:1"><div style="font-size:13px;line-height:1.5">${n.msg}</div><div style="font-size:10px;color:var(--text3);margin-top:2px">${n.dt}</div></div></div>`).join('');
+}
+
+// ── RECARREGAR ───────────────────────────────────────────────
+async function reloadData(){
+  Object.keys(_cache).forEach(k=>delete _cache[k]);
+  const icon=document.getElementById('icon-reload');if(icon)icon.classList.add('fa-spin');
+  const active=document.querySelector('.page.active');
+  if(active){const id=active.id.replace('page-','');if(PAGE_LOADERS[id])await PAGE_LOADERS[id]();}
+  if(icon)icon.classList.remove('fa-spin');showToast('Dados atualizados!','success');
+}
+
+// ── SALVAR MEMBROS ───────────────────────────────────────────
+async function salvarMembro(){
+  if(!reqAdmin('adicionar membros'))return;
+  const row={Nome:document.getElementById('mb-nome')?.value.trim()||'',Matricula:document.getElementById('mb-mat')?.value.trim()||'',Periodo:document.getElementById('mb-per')?.value||'',Liga:document.getElementById('mb-liga')?.value||'',Cargo:document.getElementById('mb-cargo')?.value||'',DataIngresso:document.getElementById('mb-data')?.value||new Date().toISOString().split('T')[0],Email:document.getElementById('mb-email')?.value.trim()||'',Status:'Ativo'};
+  if(!row.Nome||!row.Matricula){showToast('Nome e matrícula são obrigatórios.','warning');return;}
+  const btn=document.querySelector('#modal-add-membro .btn-primary');btn.disabled=true;
+  try{await apiPost({action:'insert',sheet:'Membros',row});closeModal('modal-add-membro');showToast(row.Nome+' adicionado!','success');loadMembros();loadLigas();}
+  catch(e){showToast('Erro: '+e.message,'error');}
+  finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-user-plus"></i> Adicionar';}
+}
+async function salvarAta(){
+  if(!reqAdmin('registrar atas'))return;
+  const liga=document.getElementById('ata-liga')?.value||'Diretiva';const data=document.getElementById('ata-data')?.value||'';
+  if(!data){showToast('Informe a data.','warning');return;}
+  const row={Liga:liga,Tipo:document.getElementById('ata-tipo')?.value||'Ordinária',Data:data,Horario:document.getElementById('ata-hora')?.value||'',Presentes:document.getElementById('ata-pres')?.value||'0',Duracao:document.getElementById('ata-dur')?.value||'',Titulo:`Ata ${document.getElementById('ata-tipo')?.value||'Ordinária'} — ${liga}`,Pauta:document.getElementById('ata-pauta')?.value||'',Deliberacoes:document.getElementById('ata-delib')?.value||'',Pendencias:document.getElementById('ata-pend')?.value||'',Status:'Pendente assinatura'};
+  const btn=document.querySelector('#modal-nova-ata .btn-primary');btn.disabled=true;
+  try{await apiPost({action:'insert',sheet:'Atas',row});closeModal('modal-nova-ata');showToast('Ata registrada!','success');loadAtas();}
+  catch(e){showToast('Erro: '+e.message,'error');}finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-save"></i> Salvar ata';}
+}
+async function salvarEvento(){
+  if(!reqAdmin('criar eventos'))return;
+  const row={Titulo:document.getElementById('ev-titulo')?.value.trim()||'',Liga:document.getElementById('ev-liga')?.value||'',Tipo:document.getElementById('ev-tipo')?.value||'',Data:document.getElementById('ev-data')?.value||'',Hora:document.getElementById('ev-hora')?.value||'',Local:document.getElementById('ev-local')?.value.trim()||'',Responsavel:document.getElementById('ev-resp')?.value.trim()||'',Descricao:document.getElementById('ev-desc')?.value||'',Status:'Confirmado'};
+  if(!row.Titulo||!row.Data){showToast('Título e data são obrigatórios.','warning');return;}
+  const btn=document.querySelector('#modal-novo-evento .btn-primary');btn.disabled=true;
+  try{await apiPost({action:'insert',sheet:'Eventos',row});closeModal('modal-novo-evento');showToast('Evento criado!','success');loadAgenda();}
+  catch(e){showToast('Erro: '+e.message,'error');}finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-calendar-plus"></i> Criar evento';}
+}
+async function salvarPS(){
+  if(!reqAdmin('criar processos seletivos'))return;
+  const row={Liga:document.getElementById('ps-liga')?.value||'',Vagas:document.getElementById('ps-vagas')?.value||'0',DataAbertura:document.getElementById('ps-ini')?.value||'',DataEncerramento:document.getElementById('ps-fim')?.value||'',DataEntrevista:document.getElementById('ps-entrev')?.value||'',DataResultado:document.getElementById('ps-res')?.value||'',Criterios:document.getElementById('ps-criterios')?.value||'',EditalLink:document.getElementById('ps-edital')?.value||'',Status:'Aberto'};
+  if(!row.DataAbertura){showToast('Informe a data de abertura.','warning');return;}
+  const btn=document.querySelector('#modal-novo-ps .btn-primary');btn.disabled=true;
+  try{await apiPost({action:'insert',sheet:'PS',row});closeModal('modal-novo-ps');showToast('PS criado!','success');loadProcessos();}
+  catch(e){showToast('Erro: '+e.message,'error');}finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-save"></i> Criar PS';}
+}
+async function salvarEleicao(){
+  if(!reqAdmin('criar eleições'))return;
+  const row={Orgao:document.getElementById('el-orgao')?.value||'',Cargo:document.getElementById('el-cargo')?.value.trim()||'',DataEleicao:document.getElementById('el-data')?.value||'',PrazoInscricao:document.getElementById('el-prazo')?.value||'',Regras:document.getElementById('el-regras')?.value||'',Status:'Ativa'};
+  if(!row.Cargo||!row.DataEleicao){showToast('Cargo e data são obrigatórios.','warning');return;}
+  const btn=document.querySelector('#modal-nova-eleicao .btn-primary');btn.disabled=true;
+  try{await apiPost({action:'insert',sheet:'Eleicoes',row});closeModal('modal-nova-eleicao');showToast('Eleição criada!','success');loadEleicoes();}
+  catch(e){showToast('Erro: '+e.message,'error');}finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-ballot-check"></i> Criar eleição';}
+}
+async function salvarLanc(){
+  if(!reqAdmin('registrar lançamentos'))return;
+  const row={Tipo:document.getElementById('fin-tipo')?.value||'Receita',Valor:document.getElementById('fin-valor')?.value||'0',Descricao:document.getElementById('fin-desc-inp')?.value.trim()||'',Categoria:document.getElementById('fin-cat')?.value||'',Data:document.getElementById('fin-data')?.value||new Date().toISOString().split('T')[0]};
+  if(!row.Descricao||parseFloat(row.Valor)<=0){showToast('Descrição e valor são obrigatórios.','warning');return;}
+  const btn=document.querySelector('#modal-lancamento .btn-primary');btn.disabled=true;
+  try{await apiPost({action:'insert',sheet:'Financeiro',row});closeModal('modal-lancamento');showToast('Lançamento registrado!','success');loadFinanceiro();}
+  catch(e){showToast('Erro: '+e.message,'error');}finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-save"></i> Registrar';}
+}
+async function executarUpload(){
+  if(!reqAdmin('enviar documentos'))return;
+  const fileInput=document.getElementById('doc-file');const nome=document.getElementById('doc-nome')?.value.trim();const cat=document.getElementById('doc-cat-sel')?.value||'Geral';const liga=document.getElementById('doc-liga-sel')?.value||'Diretiva';const url=document.getElementById('doc-url')?.value.trim()||'';
+  const btn=document.getElementById('btn-upload');const prog=document.getElementById('upload-prog');const fill=document.getElementById('upload-prog-fill');const msg=document.getElementById('upload-prog-msg');
+  if(url&&!fileInput?.files?.length){btn.disabled=true;try{await apiPost({action:'insert',sheet:'Documentos',row:{fileName:nome||'Documento',Categoria:cat,Liga:liga,url,dataUpload:new Date().toISOString().split('T')[0]}});closeModal('modal-upload-doc');showToast('Documento vinculado!','success');loadDocumentos();}catch(e){showToast('Erro: '+e.message,'error');}finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-upload"></i> Enviar';}return;}
+  if(!fileInput?.files?.length){showToast('Selecione um arquivo ou cole o link do Drive.','warning');return;}
+  const file=fileInput.files[0];if(file.size>20*1024*1024){showToast('Arquivo muito grande (máx 20 MB).','error');return;}
+  btn.disabled=true;prog.style.display='block';fill.style.width='0%';msg.textContent='Lendo arquivo…';
+  try{const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});fill.style.width='35%';msg.textContent='Enviando para o Drive…';const res=await apiPost({action:'uploadFile',fileName:nome||file.name,mimeType:file.type||'application/octet-stream',data:b64,Categoria:cat,Liga:liga,tamanho:(file.size/1024).toFixed(1)+' KB',dataUpload:new Date().toISOString().split('T')[0]});fill.style.width='100%';msg.textContent='✓ Enviado!';closeModal('modal-upload-doc');showToast('Documento enviado!','success');loadDocumentos();}
+  catch(e){msg.textContent='Erro: '+e.message;showToast('Erro no upload.','error');}
+  finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-upload"></i> Enviar';}
+}
+async function salvarCorr(){
+  if(!reqAdmin('registrar correspondências'))return;
+  const row={Tipo:document.getElementById('corr-tipo')?.value||'',Direcao:document.getElementById('corr-dir')?.value||'Enviada',Dest:document.getElementById('corr-dest')?.value.trim()||'',Assunto:document.getElementById('corr-assunto-inp')?.value.trim()||'',Corpo:document.getElementById('corr-corpo')?.value||'',Data:new Date().toISOString().split('T')[0],Status:'Enviada'};
+  if(!row.Dest||!row.Assunto){showToast('Destinatário e assunto são obrigatórios.','warning');return;}
+  try{await apiPost({action:'insert',sheet:'Correspondencias',row});closeModal('modal-nova-corr');showToast('Correspondência registrada!','success');loadCorr();}catch(e){showToast('Erro: '+e.message,'error');}
+}
+async function salvarOficio(){
+  if(!reqAdmin('registrar ofícios'))return;
+  const row={Numero:document.getElementById('of-num')?.value.trim()||'',Data:document.getElementById('of-data')?.value||new Date().toISOString().split('T')[0],Dest:document.getElementById('of-dest')?.value.trim()||'',Assunto:document.getElementById('of-assunto')?.value.trim()||'',Corpo:document.getElementById('of-corpo')?.value||'',DriveLink:document.getElementById('of-link')?.value.trim()||'',Status:'Emitido'};
+  if(!row.Dest||!row.Assunto){showToast('Destinatário e assunto são obrigatórios.','warning');return;}
+  try{await apiPost({action:'insert',sheet:'Oficios',row});closeModal('modal-novo-oficio');showToast('Ofício registrado!','success');loadOficios();}catch(e){showToast('Erro: '+e.message,'error');}
+}
+async function salvarCandidatura(){
+  if(!reqAdmin('registrar candidaturas'))return;
+  const row={Nome:document.getElementById('cand-nome')?.value.trim()||'',Eleicao:document.getElementById('cand-eleicao')?.value.trim()||'',Chapa:document.getElementById('cand-chapa')?.value.trim()||'',Cargo:document.getElementById('cand-cargo-el')?.value.trim()||'',Proposta:document.getElementById('cand-proposta')?.value||'',Status:'Em análise',Data:new Date().toISOString().split('T')[0]};
+  if(!row.Nome||!row.Eleicao){showToast('Nome e eleição são obrigatórios.','warning');return;}
+  try{await apiPost({action:'insert',sheet:'Candidaturas',row});closeModal('modal-nova-candidatura');showToast('Candidatura registrada!','success');loadEleicoes();}catch(e){showToast('Erro: '+e.message,'error');}
+}
+async function salvarDiretiva(){
+  if(!reqAdmin('editar composição da Diretiva'))return;
+  const inputs=document.querySelectorAll('#form-diretiva input[data-key]');
+  for(const inp of inputs){const chave=inp.getAttribute('data-key');const valor=inp.value.trim();try{try{await apiPost({action:'update',sheet:'Configuracoes',id:chave,row:{chave,valor,complemento:''}});}catch{await apiPost({action:'insert',sheet:'Configuracoes',row:{id:chave,chave,valor,complemento:''}});}}catch(e){console.warn('salvarDiretiva:',e.message);}}
+  closeModal('modal-edit-diretiva');showToast('Composição atualizada!','success');loadDiretiva();
+}
+async function enviarComunicado(){
+  if(!reqAdmin('publicar comunicados'))return;
+  const row={Destinatarios:document.getElementById('com-dest')?.value||'',Assunto:document.getElementById('com-assunto')?.value.trim()||'',Mensagem:document.getElementById('com-mensagem')?.value.trim()||'',Urgencia:document.getElementById('com-urgencia')?.value||'Normal',Data:new Date().toISOString().split('T')[0],Status:'Publicado'};
+  if(!row.Assunto||!row.Mensagem){showToast('Assunto e mensagem são obrigatórios.','warning');return;}
+  const btn=document.querySelector('#page-comunicacao .btn-primary');if(btn){btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i>';}
+  try{await apiPost({action:'insert',sheet:'Comunicados',row});showToast('Comunicado publicado!','success');document.getElementById('com-assunto').value='';document.getElementById('com-mensagem').value='';loadComunicados();}
+  catch(e){showToast('Erro: '+e.message,'error');}finally{if(btn){btn.disabled=false;btn.innerHTML='<i class="fas fa-paper-plane"></i> Publicar';}}
+}
+async function salvarCfg(){
+  const apiUrl=document.getElementById('cfg-api')?.value.trim();const prazo=document.getElementById('cfg-prazo')?.value.trim();
+  if(apiUrl&&apiUrl!==API_URL){
+    API_URL=apiUrl;
+    localStorage.setItem('dlt-api-url',apiUrl);
+    Object.keys(_cache).forEach(k=>delete _cache[k]);
+    _pingApi();
+    showToast('URL da API salva!','info');
+  }
+  if(prazo){try{try{await apiPost({action:'update',sheet:'Configuracoes',id:'prazo_prestacao_contas',row:{chave:'prazo_prestacao_contas',valor:prazo,complemento:''}});}catch{await apiPost({action:'insert',sheet:'Configuracoes',row:{id:'prazo_prestacao_contas',chave:'prazo_prestacao_contas',valor:prazo,complemento:''}});}}catch(e){}}
+  closeModal('modal-cfg');showToast('Configurações salvas!','success');
+}
+
+// ── DELETAR ──────────────────────────────────────────────────
+function delMembro(id,nome){if(!reqAdmin('remover membros'))return;customConfirm({title:'Remover membro',message:`Remover "${nome}"?`,confirmLabel:'Remover',onConfirm:async()=>{try{await apiPost({action:'delete',sheet:'Membros',id});showToast('Membro removido.','success');loadMembros();loadLigas();}catch(e){showToast('Erro: '+e.message,'error');}}});}
+function delEvento(id,nome){if(!reqAdmin('excluir eventos'))return;customConfirm({title:'Excluir evento',message:`Excluir "${nome}"?`,confirmLabel:'Excluir',onConfirm:async()=>{try{await apiPost({action:'delete',sheet:'Eventos',id});showToast('Evento excluído.','success');loadAgenda();}catch(e){showToast('Erro: '+e.message,'error');}}});}
+function delAta(id,nome){if(!reqAdmin('excluir atas'))return;customConfirm({title:'Excluir ata',message:`Excluir "${nome}"?`,confirmLabel:'Excluir',onConfirm:async()=>{try{await apiPost({action:'delete',sheet:'Atas',id});showToast('Ata excluída.','success');loadAtas();}catch(e){showToast('Erro: '+e.message,'error');}}});}
+function delPS(id){if(!reqAdmin('excluir PS'))return;customConfirm({title:'Excluir PS',message:'Excluir este processo seletivo?',confirmLabel:'Excluir',onConfirm:async()=>{try{await apiPost({action:'delete',sheet:'PS',id});showToast('PS excluído.','success');loadProcessos();}catch(e){showToast('Erro: '+e.message,'error');}}});}
+function delLanc(id,desc){if(!reqAdmin('excluir lançamentos'))return;customConfirm({title:'Excluir lançamento',message:`Excluir "${desc}"?`,confirmLabel:'Excluir',onConfirm:async()=>{try{await apiPost({action:'delete',sheet:'Financeiro',id});showToast('Lançamento excluído.','success');loadFinanceiro();}catch(e){showToast('Erro: '+e.message,'error');}}});}
+function delOficio(id){if(!reqAdmin('excluir ofícios'))return;customConfirm({title:'Excluir ofício',message:'Excluir este ofício?',confirmLabel:'Excluir',onConfirm:async()=>{try{await apiPost({action:'delete',sheet:'Oficios',id});showToast('Ofício excluído.','success');loadOficios();}catch(e){showToast('Erro: '+e.message,'error');}}});}
+function delDoc(id,nome){if(!reqAdmin('excluir documentos'))return;customConfirm({title:'Excluir documento',message:`Excluir "${nome}"?`,confirmLabel:'Excluir',onConfirm:async()=>{try{if(id)await apiPost({action:'delete',sheet:'Documentos',id});showToast('Documento excluído.','success');loadDocumentos();}catch(e){showToast('Erro: '+e.message,'error');}}});}
+
+async function testApi(){
+  const url=(document.getElementById('cfg-api')?.value||'').trim();
+  if(!url){showToast('Cole a URL da API primeiro.','warning');return;}
+  showToast('Testando conexão…','info');
+  try{
+    const r=await fetch(url+'?action=ping');
+    const d=await r.json();
+    if(d.success){showToast('✅ API conectada com sucesso!','success');}
+    else throw new Error(d.error);
+  }catch(e){showToast('❌ Falha: '+e.message,'error');}
+}
+function bindButtons(){
+  document.querySelectorAll('[data-exp]').forEach(btn=>{
+    btn.addEventListener('click',()=>exportarRelatorio(btn.getAttribute('data-exp')));
+  });
+}
+
+// ── INIT ─────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',()=>{
+  // fecha sidebar mobile em nav click
+  document.querySelectorAll('.nav-item').forEach(item=>{
+    item.addEventListener('click',()=>{if(window.innerWidth<=900)closeSidebar();});
+  });
+  // restaura sessão
+  const saved=sessionStorage.getItem('dlt-role');
+  if(saved&&CREDS[saved]){loginOk(saved);}
+  else{setTimeout(()=>document.getElementById('senha-input')?.focus(),300);}
+  // Pré-preenche campo API no modal de config
+  const cfgInput=document.getElementById('cfg-api');
+  if(cfgInput&&API_URL)cfgInput.value=API_URL;
+  // Verifica conexão com a API se já configurada
+  if(API_URL)_pingApi();
+});
+</script>
+</body>
+</html>
