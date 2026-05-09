@@ -1171,15 +1171,115 @@ async function salvarLanc(){
 }
 async function executarUpload(){
   if(!reqAdmin('enviar documentos'))return;
-  const fileInput=document.getElementById('doc-file');const nome=document.getElementById('doc-nome')?.value.trim();const cat=document.getElementById('doc-cat-sel')?.value||'Geral';const liga=document.getElementById('doc-liga-sel')?.value||'Diretiva';const url=document.getElementById('doc-url')?.value.trim()||'';
-  const btn=document.getElementById('btn-upload');const prog=document.getElementById('upload-prog');const fill=document.getElementById('upload-prog-fill');const msg=document.getElementById('upload-prog-msg');
-  if(url&&!fileInput?.files?.length){btn.disabled=true;try{await apiPost({action:'insert',sheet:'Documentos',row:{fileName:nome||'Documento',Categoria:cat,Liga:liga,url,dataUpload:new Date().toISOString().split('T')[0]}});closeModal('modal-upload-doc');showToast('Documento vinculado!','success');loadDocumentos();}catch(e){showToast('Erro: '+e.message,'error');}finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-upload"></i> Enviar';}return;}
-  if(!fileInput?.files?.length){showToast('Selecione um arquivo ou cole o link do Drive.','warning');return;}
-  const file=fileInput.files[0];if(file.size>20*1024*1024){showToast('Arquivo muito grande (máx 20 MB).','error');return;}
-  btn.disabled=true;prog.style.display='block';fill.style.width='0%';msg.textContent='Lendo arquivo…';
-  try{const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});fill.style.width='35%';msg.textContent='Enviando para o Drive…';const res=await apiPost({action:'uploadFile',fileName:nome||file.name,mimeType:file.type||'application/octet-stream',data:b64,Categoria:cat,Liga:liga,tamanho:(file.size/1024).toFixed(1)+' KB',dataUpload:new Date().toISOString().split('T')[0]});fill.style.width='100%';msg.textContent='✓ Enviado!';closeModal('modal-upload-doc');showToast('Documento enviado!','success');loadDocumentos();}
-  catch(e){msg.textContent='Erro: '+e.message;showToast('Erro no upload.','error');}
-  finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-upload"></i> Enviar';}
+  const fileInput=document.getElementById('doc-file');
+  const nome=document.getElementById('doc-nome')?.value.trim();
+  const cat=document.getElementById('doc-cat-sel')?.value||'Geral';
+  const liga=document.getElementById('doc-liga-sel')?.value||'Diretiva';
+  const driveUrl=document.getElementById('doc-url')?.value.trim()||'';
+  const btn=document.getElementById('btn-upload');
+  const prog=document.getElementById('upload-prog');
+  const fill=document.getElementById('upload-prog-fill');
+  const msg=document.getElementById('upload-prog-msg');
+
+  // ── Modo link: só registra na planilha, sem subir arquivo ──
+  if(driveUrl&&!fileInput?.files?.length){
+    if(!/^https?:\/\//.test(driveUrl)){showToast('Cole um link válido do Google Drive.','warning');return;}
+    btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Salvando…';
+    try{
+      await apiPost({action:'insert',sheet:'Documentos',row:{
+        fileName:nome||'Documento',Categoria:cat,Liga:liga,
+        url:driveUrl,tamanho:'—',dataUpload:new Date().toISOString().split('T')[0]
+      }});
+      _resetUploadModal();closeModal('modal-upload-doc');
+      showToast('Documento vinculado com sucesso!','success');loadDocumentos();
+    }catch(e){showToast('Erro ao salvar: '+e.message,'error');}
+    finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-upload"></i> Enviar';}
+    return;
+  }
+
+  // ── Modo arquivo: converte para base64 e envia ao GAS ──
+  if(!fileInput?.files?.length){
+    showToast('Selecione um arquivo ou cole o link do Drive.','warning');return;
+  }
+  const file=fileInput.files[0];
+  const MAX_MB=20;
+  if(file.size>MAX_MB*1024*1024){
+    showToast(`Arquivo muito grande. Máximo ${MAX_MB} MB.`,'error');return;
+  }
+
+  btn.disabled=true;
+  prog.style.display='block';
+  fill.style.width='0%';
+  fill.style.transition='width .4s ease';
+  msg.textContent='Lendo arquivo…';
+
+  // Barra de progresso simulada (GAS não suporta streaming)
+  let _pct=0;
+  const _ticker=setInterval(()=>{
+    if(_pct<85){_pct+=(_pct<30?8:_pct<60?4:1);fill.style.width=_pct+'%';}
+  },300);
+
+  try{
+    // 1. Converter arquivo para base64
+    const b64=await new Promise((res,rej)=>{
+      const reader=new FileReader();
+      reader.onload=()=>res(reader.result.split(',')[1]);
+      reader.onerror=()=>rej(new Error('Falha ao ler o arquivo.'));
+      reader.readAsDataURL(file);
+    });
+
+    msg.textContent=file.size>5*1024*1024
+      ?'Enviando… arquivos grandes podem levar até 60s.'
+      :'Enviando para o Drive…';
+
+    // 2. Enviar ao Google Apps Script → action: uploadFile
+    const result=await apiPost({
+      action:'uploadFile',
+      fileName:nome||file.name,
+      mimeType:file.type||'application/octet-stream',
+      data:b64,
+      Categoria:cat,
+      Liga:liga,
+      tamanho:(file.size/1024).toFixed(1)+' KB',
+      dataUpload:new Date().toISOString().split('T')[0]
+    });
+
+    // 3. Sucesso — result deve conter {url, fileName}
+    clearInterval(_ticker);
+    fill.style.width='100%';
+    msg.textContent='✓ Enviado com sucesso!';
+
+    await new Promise(r=>setTimeout(r,700));
+    _resetUploadModal();
+    closeModal('modal-upload-doc');
+    showToast('Documento enviado e salvo no Drive!','success');
+    loadDocumentos();
+
+  }catch(e){
+    clearInterval(_ticker);
+    fill.style.width='0%';
+    fill.style.background='var(--red)';
+    const errMsg=e.message||'Erro desconhecido';
+    msg.textContent='✗ '+errMsg;
+    // Erro específico de action não reconhecida → orientar o usuário
+    if(errMsg.includes('uploadFile')||errMsg.includes('desconhecida')){
+      showToast('O backend não reconhece uploadFile. Adicione o handler no Google Apps Script.','error');
+    }else{
+      showToast('Erro no upload: '+errMsg,'error');
+    }
+  }finally{
+    btn.disabled=false;
+    btn.innerHTML='<i class="fas fa-upload"></i> Enviar';
+  }
+}
+
+function _resetUploadModal(){
+  const ids=['doc-file','doc-nome','doc-url'];
+  ids.forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  const prog=document.getElementById('upload-prog');
+  const fill=document.getElementById('upload-prog-fill');
+  if(prog)prog.style.display='none';
+  if(fill){fill.style.width='0%';fill.style.background='';fill.style.transition='';}
 }
 async function salvarCorr(){
   if(!reqAdmin('registrar correspondências'))return;
